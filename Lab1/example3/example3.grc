@@ -330,7 +330,7 @@
     </param>
     <param>
       <key>widget</key>
-      <value>combo_box</value>
+      <value>radio_buttons</value>
     </param>
   </block>
   <block>

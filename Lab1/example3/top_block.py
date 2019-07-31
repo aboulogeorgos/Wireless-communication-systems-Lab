@@ -3,7 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Wed Jul 31 16:00:26 2019
+# Generated: Wed Jul 31 16:03:10 2019
 ##################################################
 
 if __name__ == '__main__':
@@ -69,16 +69,25 @@ class top_block(gr.top_block, Qt.QWidget):
         ##################################################
         self._waveform_options = (102, 103, 104, )
         self._waveform_labels = ('Cosine', 'Rectangular', 'Triangular', )
-        self._waveform_tool_bar = Qt.QToolBar(self)
-        self._waveform_tool_bar.addWidget(Qt.QLabel("waveform"+": "))
-        self._waveform_combo_box = Qt.QComboBox()
-        self._waveform_tool_bar.addWidget(self._waveform_combo_box)
-        for label in self._waveform_labels: self._waveform_combo_box.addItem(label)
-        self._waveform_callback = lambda i: Qt.QMetaObject.invokeMethod(self._waveform_combo_box, "setCurrentIndex", Qt.Q_ARG("int", self._waveform_options.index(i)))
+        self._waveform_group_box = Qt.QGroupBox("waveform")
+        self._waveform_box = Qt.QVBoxLayout()
+        class variable_chooser_button_group(Qt.QButtonGroup):
+            def __init__(self, parent=None):
+                Qt.QButtonGroup.__init__(self, parent)
+            @pyqtSlot(int)
+            def updateButtonChecked(self, button_id):
+                self.button(button_id).setChecked(True)
+        self._waveform_button_group = variable_chooser_button_group()
+        self._waveform_group_box.setLayout(self._waveform_box)
+        for i, label in enumerate(self._waveform_labels):
+        	radio_button = Qt.QRadioButton(label)
+        	self._waveform_box.addWidget(radio_button)
+        	self._waveform_button_group.addButton(radio_button, i)
+        self._waveform_callback = lambda i: Qt.QMetaObject.invokeMethod(self._waveform_button_group, "updateButtonChecked", Qt.Q_ARG("int", self._waveform_options.index(i)))
         self._waveform_callback(self.waveform)
-        self._waveform_combo_box.currentIndexChanged.connect(
+        self._waveform_button_group.buttonClicked[int].connect(
         	lambda i: self.set_waveform(self._waveform_options[i]))
-        self.top_layout.addWidget(self._waveform_tool_bar)
+        self.top_layout.addWidget(self._waveform_group_box)
         self._offset_range = Range(-1, 1, 0.01, 0, 200)
         self._offset_win = RangeWidget(self._offset_range, self.set_offset, "offset", "counter_slider", float)
         self.top_layout.addWidget(self._offset_win)
