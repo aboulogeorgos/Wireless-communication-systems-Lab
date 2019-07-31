@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 ##################################################
 # GNU Radio Python Flow Graph
-# Title: Top Block
-# Generated: Wed Jul 31 16:08:57 2019
+# Title: Example3
+# Generated: Wed Jul 31 16:10:26 2019
 ##################################################
 
 if __name__ == '__main__':
@@ -31,12 +31,12 @@ import sip
 import sys
 
 
-class top_block(gr.top_block, Qt.QWidget):
+class example3(gr.top_block, Qt.QWidget):
 
     def __init__(self):
-        gr.top_block.__init__(self, "Top Block")
+        gr.top_block.__init__(self, "Example3")
         Qt.QWidget.__init__(self)
-        self.setWindowTitle("Top Block")
+        self.setWindowTitle("Example3")
         try:
             self.setWindowIcon(Qt.QIcon.fromTheme('gnuradio-grc'))
         except:
@@ -53,7 +53,7 @@ class top_block(gr.top_block, Qt.QWidget):
         self.top_grid_layout = Qt.QGridLayout()
         self.top_layout.addLayout(self.top_grid_layout)
 
-        self.settings = Qt.QSettings("GNU Radio", "top_block")
+        self.settings = Qt.QSettings("GNU Radio", "example3")
         self.restoreGeometry(self.settings.value("geometry").toByteArray())
 
         ##################################################
@@ -195,7 +195,7 @@ class top_block(gr.top_block, Qt.QWidget):
         self.connect((self.blocks_throttle_0, 0), (self.qtgui_time_sink_x_0, 0))    
 
     def closeEvent(self, event):
-        self.settings = Qt.QSettings("GNU Radio", "top_block")
+        self.settings = Qt.QSettings("GNU Radio", "example3")
         self.settings.setValue("geometry", self.saveGeometry())
         event.accept()
 
@@ -232,7 +232,7 @@ class top_block(gr.top_block, Qt.QWidget):
         self.analog_sig_source_x_0.set_frequency(self.f0)
 
 
-def main(top_block_cls=top_block, options=None):
+def main(top_block_cls=example3, options=None):
 
     from distutils.version import StrictVersion
     if StrictVersion(Qt.qVersion()) >= StrictVersion("4.5.0"):
