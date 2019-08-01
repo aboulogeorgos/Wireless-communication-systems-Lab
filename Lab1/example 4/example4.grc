@@ -46,7 +46,7 @@
     </param>
     <param>
       <key>id</key>
-      <value>signal_to_noise_ratio</value>
+      <value>example4</value>
     </param>
     <param>
       <key>max_nouts</key>
