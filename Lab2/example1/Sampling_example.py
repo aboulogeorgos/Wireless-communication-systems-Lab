@@ -2,8 +2,10 @@
 # -*- coding: utf-8 -*-
 ##################################################
 # GNU Radio Python Flow Graph
-# Title: Sampling Example
-# Generated: Wed Jul 31 17:00:21 2019
+# Title: Sampling example
+# Author: Alexandros-Apostolos A. Boulogeorgos
+# Description: Change the sample rate (sr) of the audio file and listen what happens. 
+# Generated: Sun Aug  4 10:32:40 2019
 ##################################################
 
 if __name__ == '__main__':
@@ -32,9 +34,9 @@ import sys
 class Sampling_example(gr.top_block, Qt.QWidget):
 
     def __init__(self):
-        gr.top_block.__init__(self, "Sampling Example")
+        gr.top_block.__init__(self, "Sampling example")
         Qt.QWidget.__init__(self)
-        self.setWindowTitle("Sampling Example")
+        self.setWindowTitle("Sampling example")
         try:
             self.setWindowIcon(Qt.QIcon.fromTheme('gnuradio-grc'))
         except:
@@ -57,7 +59,7 @@ class Sampling_example(gr.top_block, Qt.QWidget):
         ##################################################
         # Variables
         ##################################################
-        self.sr = sr = 32768
+        self.sr = sr = 1000
 
         ##################################################
         # Blocks
