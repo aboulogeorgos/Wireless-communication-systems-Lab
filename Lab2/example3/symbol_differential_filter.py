@@ -2,8 +2,9 @@
 # -*- coding: utf-8 -*-
 ##################################################
 # GNU Radio Python Flow Graph
-# Title: Symbol Differential Filter
-# Generated: Sat Aug  3 07:20:58 2019
+# Title: Symbol differential filter
+# Author: Alexandros-Apostolos A. Boulogeorgos
+# Generated: Sun Aug  4 10:34:57 2019
 ##################################################
 
 if __name__ == '__main__':
@@ -34,9 +35,9 @@ import sys
 class symbol_differential_filter(gr.top_block, Qt.QWidget):
 
     def __init__(self):
-        gr.top_block.__init__(self, "Symbol Differential Filter")
+        gr.top_block.__init__(self, "Symbol differential filter")
         Qt.QWidget.__init__(self)
-        self.setWindowTitle("Symbol Differential Filter")
+        self.setWindowTitle("Symbol differential filter")
         try:
             self.setWindowIcon(Qt.QIcon.fromTheme('gnuradio-grc'))
         except:
