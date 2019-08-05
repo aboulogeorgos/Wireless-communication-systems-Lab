@@ -1,8 +1,8 @@
-# Objective:
+# Objectives
 1. To understand and familiarize with the basic functionalities of gnuradio.
 2. To create simple examples and simulate low complexity communications systems.
 
-# Contents:
+# Contents
 
 ## Example1
 A simple example to understand the use of boolean operators. In this example, two idependent random source are used that generates 0 and 1. The output of the sources are used as inputs in an XOR operator.
