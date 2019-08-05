@@ -4,7 +4,7 @@
 # GNU Radio Python Flow Graph
 # Title: AM_RX
 # Author: Alexandros-Apostolos A. Boulogeorgos
-# Generated: Mon Aug  5 10:15:28 2019
+# Generated: Mon Aug  5 11:18:51 2019
 ##################################################
 
 if __name__ == '__main__':
