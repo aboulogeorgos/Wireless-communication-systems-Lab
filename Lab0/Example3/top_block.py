@@ -3,7 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Sat Aug  3 07:29:28 2019
+# Generated: Mon Aug  5 08:21:24 2019
 ##################################################
 
 if __name__ == '__main__':
@@ -57,7 +57,7 @@ class top_block(gr.top_block, Qt.QWidget):
         ##################################################
         # Variables
         ##################################################
-        self.samp_rate = samp_rate = 52000
+        self.samp_rate = samp_rate = 48000
 
         ##################################################
         # Blocks
