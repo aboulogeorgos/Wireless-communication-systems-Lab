@@ -5,7 +5,7 @@
 # Title: Complex multiplication
 # Author: Alexandros-Apostolos A. Boulogeorgos
 # Description: A simple example of multiplication of two sinusoids signals.
-# Generated: Mon Aug  5 16:59:50 2019
+# Generated: Mon Aug  5 17:05:49 2019
 ##################################################
 
 if __name__ == '__main__':
@@ -41,8 +41,10 @@ class ssb_rx_step2(grc_wxgui.top_block_gui):
         # Variables
         ##################################################
         self.samp_rate = samp_rate = 32000
+        self.offset = offset = 0
         self.f2 = f2 = 1000
         self.f1 = f1 = 10000
+        self.amp = amp = 1
 
         ##################################################
         # Blocks
@@ -65,8 +67,8 @@ class ssb_rx_step2(grc_wxgui.top_block_gui):
         self.Add(self.wxgui_fftsink2_0.win)
         self.blocks_throttle_0 = blocks.throttle(gr.sizeof_gr_complex*1, samp_rate,True)
         self.blocks_multiply_xx_0 = blocks.multiply_vcc(1)
-        self.analog_sig_source_x_0_0 = analog.sig_source_c(samp_rate, analog.GR_COS_WAVE, f2, 1, 0)
-        self.analog_sig_source_x_0 = analog.sig_source_c(samp_rate, analog.GR_COS_WAVE, f1, 1, 0)
+        self.analog_sig_source_x_0_0 = analog.sig_source_c(samp_rate, analog.GR_COS_WAVE, f2, amp, offset)
+        self.analog_sig_source_x_0 = analog.sig_source_c(samp_rate, analog.GR_COS_WAVE, f1, amp, offset)
 
         ##################################################
         # Connections
@@ -86,6 +88,14 @@ class ssb_rx_step2(grc_wxgui.top_block_gui):
         self.analog_sig_source_x_0_0.set_sampling_freq(self.samp_rate)
         self.analog_sig_source_x_0.set_sampling_freq(self.samp_rate)
 
+    def get_offset(self):
+        return self.offset
+
+    def set_offset(self, offset):
+        self.offset = offset
+        self.analog_sig_source_x_0_0.set_offset(self.offset)
+        self.analog_sig_source_x_0.set_offset(self.offset)
+
     def get_f2(self):
         return self.f2
 
@@ -99,6 +109,14 @@ class ssb_rx_step2(grc_wxgui.top_block_gui):
     def set_f1(self, f1):
         self.f1 = f1
         self.analog_sig_source_x_0.set_frequency(self.f1)
+
+    def get_amp(self):
+        return self.amp
+
+    def set_amp(self, amp):
+        self.amp = amp
+        self.analog_sig_source_x_0_0.set_amplitude(self.amp)
+        self.analog_sig_source_x_0.set_amplitude(self.amp)
 
 
 def main(top_block_cls=ssb_rx_step2, options=None):

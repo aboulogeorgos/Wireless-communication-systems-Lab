@@ -93,6 +93,33 @@
     </param>
     <param>
       <key>_coordinate</key>
+      <value>(408, 12)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>amp</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>1</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
       <value>(272, 12)</value>
     </param>
     <param>
@@ -147,6 +174,33 @@
     </param>
     <param>
       <key>_coordinate</key>
+      <value>(472, 12)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>offset</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
       <value>(176, 12)</value>
     </param>
     <param>
@@ -166,7 +220,7 @@
     <key>analog_sig_source_x</key>
     <param>
       <key>amp</key>
-      <value>1</value>
+      <value>amp</value>
     </param>
     <param>
       <key>alias</key>
@@ -210,7 +264,7 @@
     </param>
     <param>
       <key>offset</key>
-      <value>0</value>
+      <value>offset</value>
     </param>
     <param>
       <key>type</key>
@@ -229,7 +283,7 @@
     <key>analog_sig_source_x</key>
     <param>
       <key>amp</key>
-      <value>1</value>
+      <value>amp</value>
     </param>
     <param>
       <key>alias</key>
@@ -273,7 +327,7 @@
     </param>
     <param>
       <key>offset</key>
-      <value>0</value>
+      <value>offset</value>
     </param>
     <param>
       <key>type</key>
@@ -410,7 +464,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(472, 324)</value>
+      <value>(472, 84)</value>
     </param>
     <param>
       <key>_rotation</key>
