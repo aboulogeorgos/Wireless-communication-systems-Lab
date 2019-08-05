@@ -234,7 +234,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(392, 268)</value>
+      <value>(408, 260)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -246,7 +246,7 @@
     </param>
     <param>
       <key>note</key>
-      <value>We observe a frequency span of only 64 kHz (-32 kHz to +32 kHz).</value>
+      <value>We observe a frequency span of only 256 kHz.</value>
     </param>
   </block>
   <block>
