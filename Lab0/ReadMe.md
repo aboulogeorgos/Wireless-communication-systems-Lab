@@ -15,3 +15,6 @@ Example3 combines two cosine waveforms of different frequencies and plots their 
 
 ## Example4
 Example4 plots the histogram of a uniform random variable. 
+
+## Example5
+Example5 demonstrates how to add a delay to a signal. 
