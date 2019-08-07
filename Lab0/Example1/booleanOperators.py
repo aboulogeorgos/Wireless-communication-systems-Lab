@@ -4,7 +4,7 @@
 # GNU Radio Python Flow Graph
 # Title: XOR
 # Author: Alexandros-Apostolos A. Boulogeorgos
-# Generated: Mon Aug  5 08:17:06 2019
+# Generated: Wed Aug  7 14:37:26 2019
 ##################################################
 
 if __name__ == '__main__':

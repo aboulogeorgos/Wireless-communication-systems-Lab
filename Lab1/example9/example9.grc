@@ -774,7 +774,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1032, 196)</value>
+      <value>(864, 196)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -817,7 +817,7 @@
     <key>qtgui_freq_sink_x</key>
     <param>
       <key>autoscale</key>
-      <value>False</value>
+      <value>True</value>
     </param>
     <param>
       <key>average</key>
@@ -873,7 +873,7 @@
     </param>
     <param>
       <key>grid</key>
-      <value>False</value>
+      <value>True</value>
     </param>
     <param>
       <key>id</key>
@@ -1116,7 +1116,7 @@
     <key>qtgui_freq_sink_x</key>
     <param>
       <key>autoscale</key>
-      <value>False</value>
+      <value>True</value>
     </param>
     <param>
       <key>average</key>
@@ -1160,7 +1160,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(536, 424)</value>
+      <value>(536, 416)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -1172,7 +1172,7 @@
     </param>
     <param>
       <key>grid</key>
-      <value>False</value>
+      <value>True</value>
     </param>
     <param>
       <key>id</key>
@@ -1415,7 +1415,7 @@
     <key>qtgui_freq_sink_x</key>
     <param>
       <key>autoscale</key>
-      <value>False</value>
+      <value>True</value>
     </param>
     <param>
       <key>average</key>
@@ -1459,7 +1459,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(864, 416)</value>
+      <value>(864, 432)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -1471,7 +1471,7 @@
     </param>
     <param>
       <key>grid</key>
-      <value>False</value>
+      <value>True</value>
     </param>
     <param>
       <key>id</key>
@@ -2396,7 +2396,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(864, 508)</value>
+      <value>(864, 532)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -2719,7 +2719,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1160, 344)</value>
+      <value>(1048, 216)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -2926,7 +2926,7 @@
     <key>qtgui_time_sink_x</key>
     <param>
       <key>autoscale</key>
-      <value>False</value>
+      <value>True</value>
     </param>
     <param>
       <key>axislabels</key>
@@ -2970,7 +2970,7 @@
     </param>
     <param>
       <key>grid</key>
-      <value>False</value>
+      <value>True</value>
     </param>
     <param>
       <key>id</key>
@@ -3289,7 +3289,7 @@
     <key>qtgui_time_sink_x</key>
     <param>
       <key>autoscale</key>
-      <value>False</value>
+      <value>True</value>
     </param>
     <param>
       <key>axislabels</key>
@@ -3333,7 +3333,7 @@
     </param>
     <param>
       <key>grid</key>
-      <value>False</value>
+      <value>True</value>
     </param>
     <param>
       <key>id</key>
@@ -3652,7 +3652,7 @@
     <key>qtgui_time_sink_x</key>
     <param>
       <key>autoscale</key>
-      <value>False</value>
+      <value>True</value>
     </param>
     <param>
       <key>axislabels</key>
@@ -3684,7 +3684,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(864, 312)</value>
+      <value>(864, 328)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -3696,7 +3696,7 @@
     </param>
     <param>
       <key>grid</key>
-      <value>False</value>
+      <value>True</value>
     </param>
     <param>
       <key>id</key>

@@ -4,7 +4,7 @@
 # GNU Radio Python Flow Graph
 # Title: GUI sink demonstration
 # Author: Alexandros-Apostolos A. Boulogeorgos
-# Generated: Tue Aug  6 15:08:34 2019
+# Generated: Wed Aug  7 14:40:19 2019
 ##################################################
 
 if __name__ == '__main__':

@@ -4,7 +4,7 @@
 # GNU Radio Python Flow Graph
 # Title: Delay Example
 # Author: Alexandros-Apostolos A. Boulogeorgos
-# Generated: Mon Aug  5 17:42:09 2019
+# Generated: Wed Aug  7 14:39:42 2019
 ##################################################
 
 if __name__ == '__main__':
@@ -109,7 +109,7 @@ class delay_example(grc_wxgui.top_block_gui):
         self.Add(self.wxgui_scopesink2_0.win)
         self.blocks_throttle_0 = blocks.throttle(gr.sizeof_float*1, samp_rate,True)
         self.blocks_multiply_const_vxx_0 = blocks.multiply_const_vff((constant, ))
-        self.blocks_delay_0 = blocks.delay(gr.sizeof_int*1, delay)
+        self.blocks_delay_0 = blocks.delay(gr.sizeof_float*1, delay)
         self.analog_sig_source_x_0 = analog.sig_source_f(samp_rate, analog.GR_COS_WAVE, f0, 1, 0)
 
         ##################################################
