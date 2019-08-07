@@ -4,7 +4,7 @@
 # GNU Radio Python Flow Graph
 # Title: Bipolar NRZ over AWGN with convolution FEC code and Viterbi decoder
 # Author: Alexandros-Apostolos A. Boulogeorgos
-# Generated: Wed Aug  7 16:57:35 2019
+# Generated: Wed Aug  7 17:03:44 2019
 ##################################################
 
 if __name__ == '__main__':
@@ -62,7 +62,7 @@ class top_block(gr.top_block, Qt.QWidget):
         ##################################################
         self.seed = seed = 1
         self.samp_rate = samp_rate = 32000
-        self.noise_voltage = noise_voltage = 0.6
+        self.noise_voltage = noise_voltage = 1
         self.mask = mask = 0
         
         
@@ -205,7 +205,7 @@ class top_block(gr.top_block, Qt.QWidget):
         self.glfsr_source_0 = digital.glfsr_source_b(degree, True, mask, seed)
         self.fec_extended_encoder_0 = fec.extended_encoder(encoder_obj_list=encoder, threading='capillary', puncpat='11')
         self.fec_extended_decoder_0 = fec.extended_decoder(decoder_obj_list=decoder, threading='capillary', ann=None, puncpat='11', integration_period=10000)
-        self.fec_ber_bf_0 = fec.ber_bf(False, 100, -7.0)
+        self.fec_ber_bf_0 = fec.ber_bf(False, 100, -10)
         self.blocks_pack_k_bits_bb_0_0 = blocks.pack_k_bits_bb(8)
         self.blocks_pack_k_bits_bb_0 = blocks.pack_k_bits_bb(8)
         self.blocks_char_to_float_1 = blocks.char_to_float(1, 1)
