@@ -3,7 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Add Tags
-# Generated: Wed Aug  7 14:38:03 2019
+# Generated: Fri Aug  9 07:06:36 2019
 ##################################################
 
 if __name__ == '__main__':
@@ -57,7 +57,7 @@ class add_tags(gr.top_block, Qt.QWidget):
         ##################################################
         # Variables
         ##################################################
-        self.samp_rate = samp_rate = 32000
+        self.samp_rate = samp_rate = 48000
 
         ##################################################
         # Blocks
@@ -111,7 +111,7 @@ class add_tags(gr.top_block, Qt.QWidget):
         self.top_layout.addWidget(self._qtgui_time_sink_x_0_win)
         self.blocks_vector_source_x_0 = blocks.vector_source_f((0, 0, 0), True, 1, [])
         self.blocks_throttle_0 = blocks.throttle(gr.sizeof_float*1, samp_rate,True)
-        self.blocks_tags_strobe_0 = blocks.tags_strobe(gr.sizeof_float*1, pmt.intern("TEST"), 100, pmt.intern("strobe"))
+        self.blocks_tags_strobe_0 = blocks.tags_strobe(gr.sizeof_float*1, pmt.intern("TEST"), 50, pmt.intern("strobe"))
         self.blocks_keep_one_in_n_0 = blocks.keep_one_in_n(gr.sizeof_float*1, 10)
         self.blocks_add_xx_0 = blocks.add_vff(1)
 

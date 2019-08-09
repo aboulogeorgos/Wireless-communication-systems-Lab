@@ -105,7 +105,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>32000</value>
+      <value>48000</value>
     </param>
   </block>
   <block>
@@ -254,7 +254,7 @@
     </param>
     <param>
       <key>nsamps</key>
-      <value>100</value>
+      <value>50</value>
     </param>
     <param>
       <key>type</key>
