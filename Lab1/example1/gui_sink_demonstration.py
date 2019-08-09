@@ -4,7 +4,7 @@
 # GNU Radio Python Flow Graph
 # Title: GUI sink demonstration
 # Author: Alexandros-Apostolos A. Boulogeorgos
-# Generated: Wed Aug  7 14:40:19 2019
+# Generated: Fri Aug  9 07:50:41 2019
 ##################################################
 
 if __name__ == '__main__':
@@ -18,6 +18,7 @@ if __name__ == '__main__':
             print "Warning: failed to XInitThreads()"
 
 from PyQt4 import Qt
+from PyQt4.QtCore import QObject, pyqtSlot
 from gnuradio import analog
 from gnuradio import blocks
 from gnuradio import eng_notation
@@ -58,11 +59,24 @@ class gui_sink_demonstration(gr.top_block, Qt.QWidget):
         ##################################################
         # Variables
         ##################################################
+        self.waveform1 = waveform1 = 102
         self.samp_rate = samp_rate = 32000
 
         ##################################################
         # Blocks
         ##################################################
+        self._waveform1_options = (101, 102, 103, 104, 105, )
+        self._waveform1_labels = ('Sine', 'Cosine', 'Rectangular', 'Triangular', 'Saw tooth', )
+        self._waveform1_tool_bar = Qt.QToolBar(self)
+        self._waveform1_tool_bar.addWidget(Qt.QLabel('Waveform of signal source 1'+": "))
+        self._waveform1_combo_box = Qt.QComboBox()
+        self._waveform1_tool_bar.addWidget(self._waveform1_combo_box)
+        for label in self._waveform1_labels: self._waveform1_combo_box.addItem(label)
+        self._waveform1_callback = lambda i: Qt.QMetaObject.invokeMethod(self._waveform1_combo_box, "setCurrentIndex", Qt.Q_ARG("int", self._waveform1_options.index(i)))
+        self._waveform1_callback(self.waveform1)
+        self._waveform1_combo_box.currentIndexChanged.connect(
+        	lambda i: self.set_waveform1(self._waveform1_options[i]))
+        self.top_grid_layout.addWidget(self._waveform1_tool_bar, 0,0,1,1)
         self.qtgui_sink_x_0 = qtgui.sink_f(
         	1024, #fftsize
         	firdes.WIN_BLACKMAN_hARRIS, #wintype
@@ -83,7 +97,7 @@ class gui_sink_demonstration(gr.top_block, Qt.QWidget):
         
           
         self.blocks_throttle_0 = blocks.throttle(gr.sizeof_float*1, samp_rate,True)
-        self.analog_sig_source_x_0 = analog.sig_source_f(samp_rate, analog.GR_COS_WAVE, 1000, 1, 0)
+        self.analog_sig_source_x_0 = analog.sig_source_f(samp_rate, waveform1, 1000, 1, 0)
 
         ##################################################
         # Connections
@@ -95,6 +109,14 @@ class gui_sink_demonstration(gr.top_block, Qt.QWidget):
         self.settings = Qt.QSettings("GNU Radio", "gui_sink_demonstration")
         self.settings.setValue("geometry", self.saveGeometry())
         event.accept()
+
+    def get_waveform1(self):
+        return self.waveform1
+
+    def set_waveform1(self, waveform1):
+        self.waveform1 = waveform1
+        self._waveform1_callback(self.waveform1)
+        self.analog_sig_source_x_0.set_waveform(self.waveform1)
 
     def get_samp_rate(self):
         return self.samp_rate

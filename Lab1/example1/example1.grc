@@ -109,6 +109,105 @@
     </param>
   </block>
   <block>
+    <key>variable_qtgui_chooser</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>102</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(8, 96)</value>
+    </param>
+    <param>
+      <key>gui_hint</key>
+      <value>0,0,1,1</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>waveform1</value>
+    </param>
+    <param>
+      <key>label0</key>
+      <value>Sine</value>
+    </param>
+    <param>
+      <key>label1</key>
+      <value>Cosine</value>
+    </param>
+    <param>
+      <key>label2</key>
+      <value>Rectangular</value>
+    </param>
+    <param>
+      <key>label3</key>
+      <value>Triangular</value>
+    </param>
+    <param>
+      <key>label4</key>
+      <value>Saw tooth</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>Waveform of signal source 1</value>
+    </param>
+    <param>
+      <key>labels</key>
+      <value>[]</value>
+    </param>
+    <param>
+      <key>num_opts</key>
+      <value>5</value>
+    </param>
+    <param>
+      <key>option0</key>
+      <value>101</value>
+    </param>
+    <param>
+      <key>option1</key>
+      <value>102</value>
+    </param>
+    <param>
+      <key>option2</key>
+      <value>103</value>
+    </param>
+    <param>
+      <key>option3</key>
+      <value>104</value>
+    </param>
+    <param>
+      <key>option4</key>
+      <value>105</value>
+    </param>
+    <param>
+      <key>options</key>
+      <value>[0, 1, 2]</value>
+    </param>
+    <param>
+      <key>orient</key>
+      <value>Qt.QVBoxLayout</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>int</value>
+    </param>
+    <param>
+      <key>widget</key>
+      <value>combo_box</value>
+    </param>
+  </block>
+  <block>
     <key>analog_sig_source_x</key>
     <param>
       <key>amp</key>
@@ -136,7 +235,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(96, 108)</value>
+      <value>(192, 108)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -168,7 +267,7 @@
     </param>
     <param>
       <key>waveform</key>
-      <value>analog.GR_COS_WAVE</value>
+      <value>waveform1</value>
     </param>
   </block>
   <block>
@@ -191,7 +290,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(296, 132)</value>
+      <value>(352, 132)</value>
     </param>
     <param>
       <key>_rotation</key>
