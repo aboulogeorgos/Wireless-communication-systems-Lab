@@ -4,7 +4,7 @@
 # GNU Radio Python Flow Graph
 # Title: Rational Resampler Functionality
 # Author: Alexandros-Apostolos A. Boulogeorgos
-# Generated: Wed Aug  7 14:45:01 2019
+# Generated: Fri Aug  9 08:36:33 2019
 ##################################################
 
 if __name__ == '__main__':
@@ -26,6 +26,7 @@ from gnuradio import gr
 from gnuradio import qtgui
 from gnuradio.eng_option import eng_option
 from gnuradio.filter import firdes
+from gnuradio.qtgui import Range, RangeWidget
 from optparse import OptionParser
 import sip
 import sys
@@ -60,10 +61,14 @@ class rational_resampler_functionality(gr.top_block, Qt.QWidget):
         # Variables
         ##################################################
         self.samp_rate = samp_rate = 48000
+        self.interpolation = interpolation = 4
 
         ##################################################
         # Blocks
         ##################################################
+        self._interpolation_range = Range(2, 16, 1, 4, 200)
+        self._interpolation_win = RangeWidget(self._interpolation_range, self.set_interpolation, 'Interpolation', "counter_slider", float)
+        self.top_layout.addWidget(self._interpolation_win)
         self.rational_resampler_xxx_0_0_0 = filter.rational_resampler_fff(
                 interpolation=1,
                 decimation=4,
@@ -71,7 +76,7 @@ class rational_resampler_functionality(gr.top_block, Qt.QWidget):
                 fractional_bw=None,
         )
         self.rational_resampler_xxx_0_0 = filter.rational_resampler_fff(
-                interpolation=4,
+                interpolation=interpolation,
                 decimation=1,
                 taps=None,
                 fractional_bw=None,
@@ -207,6 +212,12 @@ class rational_resampler_functionality(gr.top_block, Qt.QWidget):
         self.analog_sig_source_x_0_0_0.set_sampling_freq(self.samp_rate)
         self.analog_sig_source_x_0_0.set_sampling_freq(self.samp_rate)
         self.analog_sig_source_x_0.set_sampling_freq(self.samp_rate)
+
+    def get_interpolation(self):
+        return self.interpolation
+
+    def set_interpolation(self, interpolation):
+        self.interpolation = interpolation
 
 
 def main(top_block_cls=rational_resampler_functionality, options=None):
