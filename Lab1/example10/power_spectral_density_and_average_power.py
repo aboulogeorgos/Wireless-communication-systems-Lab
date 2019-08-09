@@ -4,7 +4,7 @@
 # GNU Radio Python Flow Graph
 # Title: Power spectral density and average power
 # Author: Alexandros-Apostolos A. Boulogeorgos
-# Generated: Fri Aug  9 06:51:49 2019
+# Generated: Fri Aug  9 08:40:59 2019
 ##################################################
 
 if __name__ == '__main__':
