@@ -3,7 +3,8 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Example3
-# Generated: Wed Aug  7 14:42:00 2019
+# Author: Alexandros-Apostolos A. Boulogeorgos
+# Generated: Fri Aug  9 08:00:06 2019
 ##################################################
 
 if __name__ == '__main__':
@@ -59,7 +60,7 @@ class example3(gr.top_block, Qt.QWidget):
         ##################################################
         # Variables
         ##################################################
-        self.waveform = waveform = 102
+        self.waveform1 = waveform1 = 102
         self.samp_rate_0 = samp_rate_0 = 32000
         self.offset = offset = 0
         self.f0 = f0 = 1000
@@ -67,27 +68,27 @@ class example3(gr.top_block, Qt.QWidget):
         ##################################################
         # Blocks
         ##################################################
-        self._waveform_options = (102, 103, 104, )
-        self._waveform_labels = ('Cosine', 'Rectangular', 'Triangular', )
-        self._waveform_group_box = Qt.QGroupBox("waveform")
-        self._waveform_box = Qt.QVBoxLayout()
+        self._waveform1_options = (101, 102, 103, 104, 105, )
+        self._waveform1_labels = ('Sine', 'Cosine', 'Rectangular', 'Triangular', 'Saw tooth', )
+        self._waveform1_group_box = Qt.QGroupBox('Waveform of signal source 1')
+        self._waveform1_box = Qt.QVBoxLayout()
         class variable_chooser_button_group(Qt.QButtonGroup):
             def __init__(self, parent=None):
                 Qt.QButtonGroup.__init__(self, parent)
             @pyqtSlot(int)
             def updateButtonChecked(self, button_id):
                 self.button(button_id).setChecked(True)
-        self._waveform_button_group = variable_chooser_button_group()
-        self._waveform_group_box.setLayout(self._waveform_box)
-        for i, label in enumerate(self._waveform_labels):
+        self._waveform1_button_group = variable_chooser_button_group()
+        self._waveform1_group_box.setLayout(self._waveform1_box)
+        for i, label in enumerate(self._waveform1_labels):
         	radio_button = Qt.QRadioButton(label)
-        	self._waveform_box.addWidget(radio_button)
-        	self._waveform_button_group.addButton(radio_button, i)
-        self._waveform_callback = lambda i: Qt.QMetaObject.invokeMethod(self._waveform_button_group, "updateButtonChecked", Qt.Q_ARG("int", self._waveform_options.index(i)))
-        self._waveform_callback(self.waveform)
-        self._waveform_button_group.buttonClicked[int].connect(
-        	lambda i: self.set_waveform(self._waveform_options[i]))
-        self.top_grid_layout.addWidget(self._waveform_group_box, 0,0,2,1)
+        	self._waveform1_box.addWidget(radio_button)
+        	self._waveform1_button_group.addButton(radio_button, i)
+        self._waveform1_callback = lambda i: Qt.QMetaObject.invokeMethod(self._waveform1_button_group, "updateButtonChecked", Qt.Q_ARG("int", self._waveform1_options.index(i)))
+        self._waveform1_callback(self.waveform1)
+        self._waveform1_button_group.buttonClicked[int].connect(
+        	lambda i: self.set_waveform1(self._waveform1_options[i]))
+        self.top_grid_layout.addWidget(self._waveform1_group_box, 0,0,2,1)
         self._offset_range = Range(-1, 1, 0.01, 0, 200)
         self._offset_win = RangeWidget(self._offset_range, self.set_offset, "offset", "counter_slider", float)
         self.top_grid_layout.addWidget(self._offset_win, 0,1,1,1)
@@ -185,7 +186,7 @@ class example3(gr.top_block, Qt.QWidget):
         self._qtgui_freq_sink_x_0_win = sip.wrapinstance(self.qtgui_freq_sink_x_0.pyqwidget(), Qt.QWidget)
         self.top_grid_layout.addWidget(self._qtgui_freq_sink_x_0_win, 2,1,1,1)
         self.blocks_throttle_0 = blocks.throttle(gr.sizeof_float*1, samp_rate_0,True)
-        self.analog_sig_source_x_0 = analog.sig_source_f(samp_rate_0, waveform, f0, 1, offset)
+        self.analog_sig_source_x_0 = analog.sig_source_f(samp_rate_0, waveform1, f0, 1, offset)
 
         ##################################################
         # Connections
@@ -199,13 +200,13 @@ class example3(gr.top_block, Qt.QWidget):
         self.settings.setValue("geometry", self.saveGeometry())
         event.accept()
 
-    def get_waveform(self):
-        return self.waveform
+    def get_waveform1(self):
+        return self.waveform1
 
-    def set_waveform(self, waveform):
-        self.waveform = waveform
-        self._waveform_callback(self.waveform)
-        self.analog_sig_source_x_0.set_waveform(self.waveform)
+    def set_waveform1(self, waveform1):
+        self.waveform1 = waveform1
+        self._waveform1_callback(self.waveform1)
+        self.analog_sig_source_x_0.set_waveform(self.waveform1)
 
     def get_samp_rate_0(self):
         return self.samp_rate_0
