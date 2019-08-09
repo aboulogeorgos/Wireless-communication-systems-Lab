@@ -3,7 +3,8 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Example4
-# Generated: Fri Aug  9 08:13:56 2019
+# Author: Alexandros-Apostolos A. Boulogeorgos
+# Generated: Fri Aug  9 08:16:56 2019
 ##################################################
 
 if __name__ == '__main__':

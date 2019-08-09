@@ -6,7 +6,7 @@
     <key>options</key>
     <param>
       <key>author</key>
-      <value></value>
+      <value>Alexandros-Apostolos A. Boulogeorgos</value>
     </param>
     <param>
       <key>window_size</key>
@@ -97,7 +97,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(120, 68)</value>
+      <value>(120, 76)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -160,7 +160,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(8, 68)</value>
+      <value>(8, 76)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -223,7 +223,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(256, 68)</value>
+      <value>(256, 76)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -282,7 +282,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(152, 8)</value>
+      <value>(184, 8)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -313,7 +313,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(424, 8)</value>
+      <value>(384, 8)</value>
     </param>
     <param>
       <key>gui_hint</key>
