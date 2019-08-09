@@ -4,7 +4,7 @@
 # GNU Radio Python Flow Graph
 # Title: Noise in QPSK
 # Author: Alexandros-Apostolos A. Boulogeorgos
-# Generated: Mon Aug  5 08:09:51 2019
+# Generated: Fri Aug  9 08:49:00 2019
 ##################################################
 
 if __name__ == '__main__':
