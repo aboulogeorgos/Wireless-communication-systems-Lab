@@ -6,7 +6,7 @@
     <key>options</key>
     <param>
       <key>author</key>
-      <value></value>
+      <value>Alexandros-Apostolos A. Boulgoergos</value>
     </param>
     <param>
       <key>window_size</key>
@@ -78,7 +78,7 @@
     </param>
     <param>
       <key>title</key>
-      <value></value>
+      <value>Interpolating and decimating FIR filters</value>
     </param>
   </block>
   <block>

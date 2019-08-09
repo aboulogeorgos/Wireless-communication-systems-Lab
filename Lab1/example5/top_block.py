@@ -2,8 +2,9 @@
 # -*- coding: utf-8 -*-
 ##################################################
 # GNU Radio Python Flow Graph
-# Title: Top Block
-# Generated: Wed Aug  7 14:43:25 2019
+# Title: Interpolating and decimating FIR filters
+# Author: Alexandros-Apostolos A. Boulgoergos
+# Generated: Fri Aug  9 08:19:10 2019
 ##################################################
 
 if __name__ == '__main__':
@@ -32,9 +33,9 @@ import sys
 class top_block(gr.top_block, Qt.QWidget):
 
     def __init__(self):
-        gr.top_block.__init__(self, "Top Block")
+        gr.top_block.__init__(self, "Interpolating and decimating FIR filters")
         Qt.QWidget.__init__(self)
-        self.setWindowTitle("Top Block")
+        self.setWindowTitle("Interpolating and decimating FIR filters")
         try:
             self.setWindowIcon(Qt.QIcon.fromTheme('gnuradio-grc'))
         except:
