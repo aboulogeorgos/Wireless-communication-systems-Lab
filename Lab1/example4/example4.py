@@ -3,7 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Example4
-# Generated: Wed Aug  7 14:42:51 2019
+# Generated: Fri Aug  9 08:13:56 2019
 ##################################################
 
 if __name__ == '__main__':
@@ -17,7 +17,9 @@ if __name__ == '__main__':
             print "Warning: failed to XInitThreads()"
 
 from PyQt4 import Qt
+from PyQt4.QtCore import QObject, pyqtSlot
 from gnuradio import analog
+from gnuradio import audio
 from gnuradio import blocks
 from gnuradio import eng_notation
 from gnuradio import gr
@@ -58,19 +60,36 @@ class example4(gr.top_block, Qt.QWidget):
         ##################################################
         # Variables
         ##################################################
+        self.waveform1 = waveform1 = 102
         self.samp_rate = samp_rate = 1000000
+        self.noise_voltage = noise_voltage = 1
         self.fr = fr = 1000
         self.amp = amp = 10
 
         ##################################################
         # Blocks
         ##################################################
+        self._waveform1_options = (101, 102, 103, 104, 105, )
+        self._waveform1_labels = ('Sine', 'Cosine', 'Rectangular', 'Triangular', 'Saw tooth', )
+        self._waveform1_tool_bar = Qt.QToolBar(self)
+        self._waveform1_tool_bar.addWidget(Qt.QLabel('Waveform of signal source 1'+": "))
+        self._waveform1_combo_box = Qt.QComboBox()
+        self._waveform1_tool_bar.addWidget(self._waveform1_combo_box)
+        for label in self._waveform1_labels: self._waveform1_combo_box.addItem(label)
+        self._waveform1_callback = lambda i: Qt.QMetaObject.invokeMethod(self._waveform1_combo_box, "setCurrentIndex", Qt.Q_ARG("int", self._waveform1_options.index(i)))
+        self._waveform1_callback(self.waveform1)
+        self._waveform1_combo_box.currentIndexChanged.connect(
+        	lambda i: self.set_waveform1(self._waveform1_options[i]))
+        self.top_grid_layout.addWidget(self._waveform1_tool_bar, 0,1,1,1)
+        self._noise_voltage_range = Range(0, 100, 1, 1, 200)
+        self._noise_voltage_win = RangeWidget(self._noise_voltage_range, self.set_noise_voltage, 'Noise Amplitude', "counter_slider", float)
+        self.top_grid_layout.addWidget(self._noise_voltage_win, 1,1,1,1)
         self._fr_range = Range(-500000, 500000, 100, 1000, 200)
         self._fr_win = RangeWidget(self._fr_range, self.set_fr, 'Frequency', "counter_slider", float)
-        self.top_layout.addWidget(self._fr_win)
+        self.top_grid_layout.addWidget(self._fr_win, 0,0,1,1)
         self._amp_range = Range(0, 100, 1, 10, 200)
         self._amp_win = RangeWidget(self._amp_range, self.set_amp, 'Signal Amplitude', "counter_slider", float)
-        self.top_layout.addWidget(self._amp_win)
+        self.top_grid_layout.addWidget(self._amp_win, 1,0,1,1)
         self.qtgui_time_sink_x_0 = qtgui.time_sink_f(
         	1024, #size
         	samp_rate, #samp_rate
@@ -118,17 +137,63 @@ class example4(gr.top_block, Qt.QWidget):
         
         self._qtgui_time_sink_x_0_win = sip.wrapinstance(self.qtgui_time_sink_x_0.pyqwidget(), Qt.QWidget)
         self.top_layout.addWidget(self._qtgui_time_sink_x_0_win)
+        self.qtgui_freq_sink_x_0 = qtgui.freq_sink_f(
+        	1024, #size
+        	firdes.WIN_BLACKMAN_hARRIS, #wintype
+        	0, #fc
+        	samp_rate, #bw
+        	"", #name
+        	1 #number of inputs
+        )
+        self.qtgui_freq_sink_x_0.set_update_time(0.10)
+        self.qtgui_freq_sink_x_0.set_y_axis(-140, 10)
+        self.qtgui_freq_sink_x_0.set_y_label('Relative Gain', 'dB')
+        self.qtgui_freq_sink_x_0.set_trigger_mode(qtgui.TRIG_MODE_FREE, 0.0, 0, "")
+        self.qtgui_freq_sink_x_0.enable_autoscale(False)
+        self.qtgui_freq_sink_x_0.enable_grid(False)
+        self.qtgui_freq_sink_x_0.set_fft_average(1.0)
+        self.qtgui_freq_sink_x_0.enable_axis_labels(True)
+        self.qtgui_freq_sink_x_0.enable_control_panel(False)
+        
+        if not True:
+          self.qtgui_freq_sink_x_0.disable_legend()
+        
+        if "float" == "float" or "float" == "msg_float":
+          self.qtgui_freq_sink_x_0.set_plot_pos_half(not True)
+        
+        labels = ['', '', '', '', '',
+                  '', '', '', '', '']
+        widths = [1, 1, 1, 1, 1,
+                  1, 1, 1, 1, 1]
+        colors = ["blue", "red", "green", "black", "cyan",
+                  "magenta", "yellow", "dark red", "dark green", "dark blue"]
+        alphas = [1.0, 1.0, 1.0, 1.0, 1.0,
+                  1.0, 1.0, 1.0, 1.0, 1.0]
+        for i in xrange(1):
+            if len(labels[i]) == 0:
+                self.qtgui_freq_sink_x_0.set_line_label(i, "Data {0}".format(i))
+            else:
+                self.qtgui_freq_sink_x_0.set_line_label(i, labels[i])
+            self.qtgui_freq_sink_x_0.set_line_width(i, widths[i])
+            self.qtgui_freq_sink_x_0.set_line_color(i, colors[i])
+            self.qtgui_freq_sink_x_0.set_line_alpha(i, alphas[i])
+        
+        self._qtgui_freq_sink_x_0_win = sip.wrapinstance(self.qtgui_freq_sink_x_0.pyqwidget(), Qt.QWidget)
+        self.top_layout.addWidget(self._qtgui_freq_sink_x_0_win)
         self.blocks_throttle_0 = blocks.throttle(gr.sizeof_float*1, samp_rate,True)
         self.blocks_add_xx_0 = blocks.add_vff(1)
-        self.analog_sig_source_x_0 = analog.sig_source_f(samp_rate, analog.GR_COS_WAVE, fr, amp, 0)
-        self.analog_noise_source_x_0 = analog.noise_source_f(analog.GR_GAUSSIAN, 1, 0)
+        self.audio_sink_0 = audio.sink(samp_rate, '', True)
+        self.analog_sig_source_x_0 = analog.sig_source_f(samp_rate, waveform1, fr, amp, 0)
+        self.analog_noise_source_x_0 = analog.noise_source_f(analog.GR_GAUSSIAN, noise_voltage, 0)
 
         ##################################################
         # Connections
         ##################################################
         self.connect((self.analog_noise_source_x_0, 0), (self.blocks_add_xx_0, 1))    
         self.connect((self.analog_sig_source_x_0, 0), (self.blocks_add_xx_0, 0))    
+        self.connect((self.blocks_add_xx_0, 0), (self.audio_sink_0, 0))    
         self.connect((self.blocks_add_xx_0, 0), (self.blocks_throttle_0, 0))    
+        self.connect((self.blocks_throttle_0, 0), (self.qtgui_freq_sink_x_0, 0))    
         self.connect((self.blocks_throttle_0, 0), (self.qtgui_time_sink_x_0, 0))    
 
     def closeEvent(self, event):
@@ -136,14 +201,30 @@ class example4(gr.top_block, Qt.QWidget):
         self.settings.setValue("geometry", self.saveGeometry())
         event.accept()
 
+    def get_waveform1(self):
+        return self.waveform1
+
+    def set_waveform1(self, waveform1):
+        self.waveform1 = waveform1
+        self._waveform1_callback(self.waveform1)
+        self.analog_sig_source_x_0.set_waveform(self.waveform1)
+
     def get_samp_rate(self):
         return self.samp_rate
 
     def set_samp_rate(self, samp_rate):
         self.samp_rate = samp_rate
         self.qtgui_time_sink_x_0.set_samp_rate(self.samp_rate)
+        self.qtgui_freq_sink_x_0.set_frequency_range(0, self.samp_rate)
         self.blocks_throttle_0.set_sample_rate(self.samp_rate)
         self.analog_sig_source_x_0.set_sampling_freq(self.samp_rate)
+
+    def get_noise_voltage(self):
+        return self.noise_voltage
+
+    def set_noise_voltage(self, noise_voltage):
+        self.noise_voltage = noise_voltage
+        self.analog_noise_source_x_0.set_amplitude(self.noise_voltage)
 
     def get_fr(self):
         return self.fr
