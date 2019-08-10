@@ -271,6 +271,69 @@
     </param>
   </block>
   <block>
+    <key>variable_qtgui_range</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>100</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(824, 4)</value>
+    </param>
+    <param>
+      <key>gui_hint</key>
+      <value>0,0,1,1</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>stop_band_attenuation</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>Stop Band Attenuation</value>
+    </param>
+    <param>
+      <key>min_len</key>
+      <value>200</value>
+    </param>
+    <param>
+      <key>orient</key>
+      <value>Qt.Horizontal</value>
+    </param>
+    <param>
+      <key>start</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>step</key>
+      <value>10</value>
+    </param>
+    <param>
+      <key>stop</key>
+      <value>1000</value>
+    </param>
+    <param>
+      <key>rangeType</key>
+      <value>float</value>
+    </param>
+    <param>
+      <key>widget</key>
+      <value>counter_slider</value>
+    </param>
+  </block>
+  <block>
     <key>blocks_delay</key>
     <param>
       <key>alias</key>
@@ -294,7 +357,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(888, 68)</value>
+      <value>(1008, 196)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -345,7 +408,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(184, 148)</value>
+      <value>(200, 252)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -400,7 +463,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(8, 136)</value>
+      <value>(8, 240)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -463,7 +526,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(704, 140)</value>
+      <value>(784, 248)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -518,7 +581,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(872, 140)</value>
+      <value>(968, 320)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -565,7 +628,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(168, 76)</value>
+      <value>(168, 68)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -600,7 +663,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(320, 140)</value>
+      <value>(360, 248)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -655,7 +718,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(488, 128)</value>
+      <value>(544, 232)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -687,7 +750,7 @@
     </param>
     <param>
       <key>atten</key>
-      <value>100</value>
+      <value>stop_band_attenuation</value>
     </param>
     <param>
       <key>taps</key>
@@ -702,7 +765,7 @@
     <key>qtgui_time_sink_x</key>
     <param>
       <key>autoscale</key>
-      <value>False</value>
+      <value>True</value>
     </param>
     <param>
       <key>axislabels</key>
@@ -734,11 +797,11 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1072, 88)</value>
+      <value>(1160, 232)</value>
     </param>
     <param>
       <key>gui_hint</key>
-      <value>0,1,1,1</value>
+      <value>1,0,1,1</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -746,7 +809,7 @@
     </param>
     <param>
       <key>grid</key>
-      <value>False</value>
+      <value>True</value>
     </param>
     <param>
       <key>id</key>

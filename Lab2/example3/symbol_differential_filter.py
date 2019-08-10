@@ -4,7 +4,7 @@
 # GNU Radio Python Flow Graph
 # Title: Symbol differential filter
 # Author: Alexandros-Apostolos A. Boulogeorgos
-# Generated: Sun Aug  4 10:34:57 2019
+# Generated: Sat Aug 10 06:34:23 2019
 ##################################################
 
 if __name__ == '__main__':
@@ -26,6 +26,7 @@ from gnuradio import qtgui
 from gnuradio.eng_option import eng_option
 from gnuradio.filter import firdes
 from gnuradio.filter import pfb
+from gnuradio.qtgui import Range, RangeWidget
 from optparse import OptionParser
 import math
 import sip
@@ -63,6 +64,7 @@ class symbol_differential_filter(gr.top_block, Qt.QWidget):
         self.sps = sps = 4
         self.ntaps = ntaps = 45
         self.eb = eb = 0.25
+        self.stop_band_attenuation = stop_band_attenuation = 100
         self.samp_rate = samp_rate = 32000
         self.rrc_tx = rrc_tx = firdes.root_raised_cosine(sps, sps, 1, eb, sps*ntaps)
         self.rrc_rx = rrc_rx = firdes.root_raised_cosine(1.0, sps, 1, eb, ntaps)
@@ -71,6 +73,9 @@ class symbol_differential_filter(gr.top_block, Qt.QWidget):
         ##################################################
         # Blocks
         ##################################################
+        self._stop_band_attenuation_range = Range(1, 1000, 10, 100, 200)
+        self._stop_band_attenuation_win = RangeWidget(self._stop_band_attenuation_range, self.set_stop_band_attenuation, 'Stop Band Attenuation', "counter_slider", float)
+        self.top_grid_layout.addWidget(self._stop_band_attenuation_win, 0,0,1,1)
         self.qtgui_time_sink_x_0_0 = qtgui.time_sink_f(
         	7*sps, #size
         	samp_rate, #samp_rate
@@ -84,8 +89,8 @@ class symbol_differential_filter(gr.top_block, Qt.QWidget):
         
         self.qtgui_time_sink_x_0_0.enable_tags(-1, True)
         self.qtgui_time_sink_x_0_0.set_trigger_mode(qtgui.TRIG_MODE_NORM, qtgui.TRIG_SLOPE_POS, 0.8, 0.00005*sps, 0, "")
-        self.qtgui_time_sink_x_0_0.enable_autoscale(False)
-        self.qtgui_time_sink_x_0_0.enable_grid(False)
+        self.qtgui_time_sink_x_0_0.enable_autoscale(True)
+        self.qtgui_time_sink_x_0_0.enable_grid(True)
         self.qtgui_time_sink_x_0_0.enable_axis_labels(True)
         self.qtgui_time_sink_x_0_0.enable_control_panel(False)
         
@@ -117,7 +122,7 @@ class symbol_differential_filter(gr.top_block, Qt.QWidget):
             self.qtgui_time_sink_x_0_0.set_line_alpha(i, alphas[i])
         
         self._qtgui_time_sink_x_0_0_win = sip.wrapinstance(self.qtgui_time_sink_x_0_0.pyqwidget(), Qt.QWidget)
-        self.top_grid_layout.addWidget(self._qtgui_time_sink_x_0_0_win, 0,1,1,1)
+        self.top_grid_layout.addWidget(self._qtgui_time_sink_x_0_0_win, 1,0,1,1)
         self.pfb_arb_resampler_xxx_0_0_1 = pfb.arb_resampler_fff(
         	  rate,
                   taps=None,
@@ -175,6 +180,12 @@ class symbol_differential_filter(gr.top_block, Qt.QWidget):
         self.eb = eb
         self.set_rrc_tx(firdes.root_raised_cosine(self.sps, self.sps, 1, self.eb, self.sps*self.ntaps))
         self.set_rrc_rx(firdes.root_raised_cosine(1.0, self.sps, 1, self.eb, self.ntaps))
+
+    def get_stop_band_attenuation(self):
+        return self.stop_band_attenuation
+
+    def set_stop_band_attenuation(self, stop_band_attenuation):
+        self.stop_band_attenuation = stop_band_attenuation
 
     def get_samp_rate(self):
         return self.samp_rate
