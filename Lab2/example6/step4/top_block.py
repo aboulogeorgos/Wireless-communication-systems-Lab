@@ -4,7 +4,7 @@
 # GNU Radio Python Flow Graph
 # Title: AM_RX
 # Author: Alexandros-Apostolos A. Boulogeorgos
-# Generated: Wed Aug  7 14:54:27 2019
+# Generated: Sat Aug 10 07:47:32 2019
 ##################################################
 
 if __name__ == '__main__':
@@ -73,6 +73,91 @@ class top_block(grc_wxgui.top_block_gui):
         	proportion=1,
         )
         self.Add(_volume_sizer)
+        self.notebook = self.notebook = wx.Notebook(self.GetWin(), style=wx.NB_TOP)
+        self.notebook.AddPage(grc_wxgui.Panel(self.notebook), "Bef. 1st rational sampler")
+        self.notebook.AddPage(grc_wxgui.Panel(self.notebook), "After 1st rational sampler")
+        self.notebook.AddPage(grc_wxgui.Panel(self.notebook), "Comparison of input-output of 1st rational sampler")
+        self.Add(self.notebook)
+        self.wxgui_fftsink2_0_0_1_0 = fftsink2.fft_sink_c(
+        	self.notebook.GetPage(2).GetWin(),
+        	baseband_freq=0,
+        	y_per_div=10,
+        	y_divs=10,
+        	ref_level=0,
+        	ref_scale=2.0,
+        	sample_rate=samp_rate/resamp_factor,
+        	fft_size=1024,
+        	fft_rate=15,
+        	average=False,
+        	avg_alpha=None,
+        	title='FFT Plot (Before first rational sampler)',
+        	peak_hold=False,
+        )
+        self.notebook.GetPage(2).Add(self.wxgui_fftsink2_0_0_1_0.win)
+        self.wxgui_fftsink2_0_0_1 = fftsink2.fft_sink_c(
+        	self.notebook.GetPage(2).GetWin(),
+        	baseband_freq=0,
+        	y_per_div=10,
+        	y_divs=10,
+        	ref_level=0,
+        	ref_scale=2.0,
+        	sample_rate=samp_rate/resamp_factor,
+        	fft_size=1024,
+        	fft_rate=15,
+        	average=False,
+        	avg_alpha=None,
+        	title='FFT Plot (Before first rational sampler)',
+        	peak_hold=False,
+        )
+        self.notebook.GetPage(2).Add(self.wxgui_fftsink2_0_0_1.win)
+        self.wxgui_fftsink2_0_0_0_0 = fftsink2.fft_sink_c(
+        	self.notebook.GetPage(2).GetWin(),
+        	baseband_freq=0,
+        	y_per_div=10,
+        	y_divs=10,
+        	ref_level=0,
+        	ref_scale=2.0,
+        	sample_rate=samp_rate/resamp_factor,
+        	fft_size=1024,
+        	fft_rate=15,
+        	average=False,
+        	avg_alpha=None,
+        	title='FFT Plot (After LPF)',
+        	peak_hold=False,
+        )
+        self.notebook.GetPage(2).Add(self.wxgui_fftsink2_0_0_0_0.win)
+        self.wxgui_fftsink2_0_0_0 = fftsink2.fft_sink_c(
+        	self.notebook.GetPage(1).GetWin(),
+        	baseband_freq=0,
+        	y_per_div=10,
+        	y_divs=10,
+        	ref_level=0,
+        	ref_scale=2.0,
+        	sample_rate=samp_rate/resamp_factor,
+        	fft_size=1024,
+        	fft_rate=15,
+        	average=False,
+        	avg_alpha=None,
+        	title='FFT Plot (After first rational sampler)',
+        	peak_hold=False,
+        )
+        self.notebook.GetPage(1).Add(self.wxgui_fftsink2_0_0_0.win)
+        self.wxgui_fftsink2_0_0 = fftsink2.fft_sink_c(
+        	self.notebook.GetPage(0).GetWin(),
+        	baseband_freq=0,
+        	y_per_div=10,
+        	y_divs=10,
+        	ref_level=0,
+        	ref_scale=2.0,
+        	sample_rate=samp_rate/resamp_factor,
+        	fft_size=1024,
+        	fft_rate=15,
+        	average=False,
+        	avg_alpha=None,
+        	title='FFT Plot (Before first rational sampler)',
+        	peak_hold=False,
+        )
+        self.notebook.GetPage(0).Add(self.wxgui_fftsink2_0_0.win)
         self.wxgui_fftsink2_0 = fftsink2.fft_sink_f(
         	self.GetWin(),
         	baseband_freq=0,
@@ -85,7 +170,7 @@ class top_block(grc_wxgui.top_block_gui):
         	fft_rate=15,
         	average=False,
         	avg_alpha=None,
-        	title='FFT Plot',
+        	title='FFT Plot (After second rational sampler)',
         	peak_hold=False,
         )
         self.Add(self.wxgui_fftsink2_0.win)
@@ -114,10 +199,15 @@ class top_block(grc_wxgui.top_block_gui):
         ##################################################
         self.connect((self.blocks_complex_to_mag_0, 0), (self.dc_blocker_xx_0, 0))    
         self.connect((self.blocks_file_source_0, 0), (self.rational_resampler_xxx_0, 0))    
+        self.connect((self.blocks_file_source_0, 0), (self.wxgui_fftsink2_0_0, 0))    
+        self.connect((self.blocks_file_source_0, 0), (self.wxgui_fftsink2_0_0_1, 0))    
         self.connect((self.blocks_multiply_const_vxx_0, 0), (self.rational_resampler_xxx_0_0, 0))    
         self.connect((self.dc_blocker_xx_0, 0), (self.blocks_multiply_const_vxx_0, 0))    
         self.connect((self.low_pass_filter_0, 0), (self.blocks_complex_to_mag_0, 0))    
+        self.connect((self.low_pass_filter_0, 0), (self.wxgui_fftsink2_0_0_0_0, 0))    
         self.connect((self.rational_resampler_xxx_0, 0), (self.low_pass_filter_0, 0))    
+        self.connect((self.rational_resampler_xxx_0, 0), (self.wxgui_fftsink2_0_0_0, 0))    
+        self.connect((self.rational_resampler_xxx_0, 0), (self.wxgui_fftsink2_0_0_1_0, 0))    
         self.connect((self.rational_resampler_xxx_0_0, 0), (self.audio_sink_0, 0))    
         self.connect((self.rational_resampler_xxx_0_0, 0), (self.wxgui_fftsink2_0, 0))    
 
@@ -142,6 +232,11 @@ class top_block(grc_wxgui.top_block_gui):
 
     def set_samp_rate(self, samp_rate):
         self.samp_rate = samp_rate
+        self.wxgui_fftsink2_0_0_1_0.set_sample_rate(self.samp_rate/self.resamp_factor)
+        self.wxgui_fftsink2_0_0_1.set_sample_rate(self.samp_rate/self.resamp_factor)
+        self.wxgui_fftsink2_0_0_0_0.set_sample_rate(self.samp_rate/self.resamp_factor)
+        self.wxgui_fftsink2_0_0_0.set_sample_rate(self.samp_rate/self.resamp_factor)
+        self.wxgui_fftsink2_0_0.set_sample_rate(self.samp_rate/self.resamp_factor)
         self.wxgui_fftsink2_0.set_sample_rate(self.samp_rate/self.resamp_factor)
         self.low_pass_filter_0.set_taps(firdes.low_pass(1, self.samp_rate, self.cut_off_freq, self.transmission_width, firdes.WIN_HAMMING, 6.76))
 
@@ -150,6 +245,11 @@ class top_block(grc_wxgui.top_block_gui):
 
     def set_resamp_factor(self, resamp_factor):
         self.resamp_factor = resamp_factor
+        self.wxgui_fftsink2_0_0_1_0.set_sample_rate(self.samp_rate/self.resamp_factor)
+        self.wxgui_fftsink2_0_0_1.set_sample_rate(self.samp_rate/self.resamp_factor)
+        self.wxgui_fftsink2_0_0_0_0.set_sample_rate(self.samp_rate/self.resamp_factor)
+        self.wxgui_fftsink2_0_0_0.set_sample_rate(self.samp_rate/self.resamp_factor)
+        self.wxgui_fftsink2_0_0.set_sample_rate(self.samp_rate/self.resamp_factor)
         self.wxgui_fftsink2_0.set_sample_rate(self.samp_rate/self.resamp_factor)
 
     def get_cut_off_freq(self):
