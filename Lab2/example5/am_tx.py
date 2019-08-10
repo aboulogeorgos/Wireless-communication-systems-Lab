@@ -5,7 +5,7 @@
 # Title: AM TX
 # Author: Alexandros-Apostolos A. Boulogeorgos
 # Description: A simple AM transmitter
-# Generated: Mon Aug  5 08:59:26 2019
+# Generated: Sat Aug 10 06:57:48 2019
 ##################################################
 
 if __name__ == '__main__':
