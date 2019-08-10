@@ -2,8 +2,9 @@
 # -*- coding: utf-8 -*-
 ##################################################
 # GNU Radio Python Flow Graph
-# Title: Psk Modulation Demodulation
-# Generated: Sun Aug  4 10:24:44 2019
+# Title: PSK  under AWGN
+# Author: Alexandros-Apostolos A. Boulogeorgos
+# Generated: Sat Aug 10 06:42:16 2019
 ##################################################
 
 if __name__ == '__main__':
@@ -35,9 +36,9 @@ import sys
 class psk_modulation_demodulation(gr.top_block, Qt.QWidget):
 
     def __init__(self):
-        gr.top_block.__init__(self, "Psk Modulation Demodulation")
+        gr.top_block.__init__(self, "PSK  under AWGN")
         Qt.QWidget.__init__(self)
-        self.setWindowTitle("Psk Modulation Demodulation")
+        self.setWindowTitle("PSK  under AWGN")
         try:
             self.setWindowIcon(Qt.QIcon.fromTheme('gnuradio-grc'))
         except:
@@ -69,10 +70,57 @@ class psk_modulation_demodulation(gr.top_block, Qt.QWidget):
         self._noise_amplitude_range = Range(0, 1, .001, .01, 200)
         self._noise_amplitude_win = RangeWidget(self._noise_amplitude_range, self.set_noise_amplitude, "noise_amplitude", "counter_slider", float)
         self.top_layout.addWidget(self._noise_amplitude_win)
+        self.qtgui_time_sink_x_0_0 = qtgui.time_sink_f(
+        	1024, #size
+        	samp_rate, #samp_rate
+        	"Before modulator", #name
+        	1 #number of inputs
+        )
+        self.qtgui_time_sink_x_0_0.set_update_time(0.10)
+        self.qtgui_time_sink_x_0_0.set_y_axis(-.5, 3.5)
+        
+        self.qtgui_time_sink_x_0_0.set_y_label('Amplitude', "")
+        
+        self.qtgui_time_sink_x_0_0.enable_tags(-1, True)
+        self.qtgui_time_sink_x_0_0.set_trigger_mode(qtgui.TRIG_MODE_FREE, qtgui.TRIG_SLOPE_POS, 0.0, 0, 0, "")
+        self.qtgui_time_sink_x_0_0.enable_autoscale(False)
+        self.qtgui_time_sink_x_0_0.enable_grid(False)
+        self.qtgui_time_sink_x_0_0.enable_axis_labels(True)
+        self.qtgui_time_sink_x_0_0.enable_control_panel(False)
+        
+        if not True:
+          self.qtgui_time_sink_x_0_0.disable_legend()
+        
+        labels = ['', '', '', '', '',
+                  '', '', '', '', '']
+        widths = [1, 1, 1, 1, 1,
+                  1, 1, 1, 1, 1]
+        colors = ["blue", "red", "green", "black", "cyan",
+                  "magenta", "yellow", "dark red", "dark green", "blue"]
+        styles = [3, 1, 1, 1, 1,
+                  1, 1, 1, 1, 1]
+        markers = [0, -1, -1, -1, -1,
+                   -1, -1, -1, -1, -1]
+        alphas = [1.0, 1.0, 1.0, 1.0, 1.0,
+                  1.0, 1.0, 1.0, 1.0, 1.0]
+        
+        for i in xrange(1):
+            if len(labels[i]) == 0:
+                self.qtgui_time_sink_x_0_0.set_line_label(i, "Data {0}".format(i))
+            else:
+                self.qtgui_time_sink_x_0_0.set_line_label(i, labels[i])
+            self.qtgui_time_sink_x_0_0.set_line_width(i, widths[i])
+            self.qtgui_time_sink_x_0_0.set_line_color(i, colors[i])
+            self.qtgui_time_sink_x_0_0.set_line_style(i, styles[i])
+            self.qtgui_time_sink_x_0_0.set_line_marker(i, markers[i])
+            self.qtgui_time_sink_x_0_0.set_line_alpha(i, alphas[i])
+        
+        self._qtgui_time_sink_x_0_0_win = sip.wrapinstance(self.qtgui_time_sink_x_0_0.pyqwidget(), Qt.QWidget)
+        self.top_grid_layout.addWidget(self._qtgui_time_sink_x_0_0_win, 0,0)
         self.qtgui_time_sink_x_0 = qtgui.time_sink_f(
         	1024, #size
         	samp_rate, #samp_rate
-        	"", #name
+        	"After demodulator", #name
         	1 #number of inputs
         )
         self.qtgui_time_sink_x_0.set_update_time(0.10)
@@ -115,7 +163,48 @@ class psk_modulation_demodulation(gr.top_block, Qt.QWidget):
             self.qtgui_time_sink_x_0.set_line_alpha(i, alphas[i])
         
         self._qtgui_time_sink_x_0_win = sip.wrapinstance(self.qtgui_time_sink_x_0.pyqwidget(), Qt.QWidget)
-        self.top_layout.addWidget(self._qtgui_time_sink_x_0_win)
+        self.top_grid_layout.addWidget(self._qtgui_time_sink_x_0_win, 0,1)
+        self.qtgui_const_sink_x_0_0 = qtgui.const_sink_c(
+        	1024, #size
+        	"After modulator", #name
+        	1 #number of inputs
+        )
+        self.qtgui_const_sink_x_0_0.set_update_time(0.10)
+        self.qtgui_const_sink_x_0_0.set_y_axis(-2, 2)
+        self.qtgui_const_sink_x_0_0.set_x_axis(-2, 2)
+        self.qtgui_const_sink_x_0_0.set_trigger_mode(qtgui.TRIG_MODE_FREE, qtgui.TRIG_SLOPE_POS, 0.0, 0, "")
+        self.qtgui_const_sink_x_0_0.enable_autoscale(False)
+        self.qtgui_const_sink_x_0_0.enable_grid(False)
+        self.qtgui_const_sink_x_0_0.enable_axis_labels(True)
+        
+        if not True:
+          self.qtgui_const_sink_x_0_0.disable_legend()
+        
+        labels = ['', '', '', '', '',
+                  '', '', '', '', '']
+        widths = [1, 1, 1, 1, 1,
+                  1, 1, 1, 1, 1]
+        colors = ["blue", "red", "red", "red", "red",
+                  "red", "red", "red", "red", "red"]
+        styles = [0, 0, 0, 0, 0,
+                  0, 0, 0, 0, 0]
+        markers = [0, 0, 0, 0, 0,
+                   0, 0, 0, 0, 0]
+        alphas = [1.0, 1.0, 1.0, 1.0, 1.0,
+                  1.0, 1.0, 1.0, 1.0, 1.0]
+        for i in xrange(1):
+            if len(labels[i]) == 0:
+                self.qtgui_const_sink_x_0_0.set_line_label(i, "Data {0}".format(i))
+            else:
+                self.qtgui_const_sink_x_0_0.set_line_label(i, labels[i])
+            self.qtgui_const_sink_x_0_0.set_line_width(i, widths[i])
+            self.qtgui_const_sink_x_0_0.set_line_color(i, colors[i])
+            self.qtgui_const_sink_x_0_0.set_line_style(i, styles[i])
+            self.qtgui_const_sink_x_0_0.set_line_marker(i, markers[i])
+            self.qtgui_const_sink_x_0_0.set_line_alpha(i, alphas[i])
+        
+        self._qtgui_const_sink_x_0_0_win = sip.wrapinstance(self.qtgui_const_sink_x_0_0.pyqwidget(), Qt.QWidget)
+        self.top_grid_layout.addWidget(self._qtgui_const_sink_x_0_0_win, 1,0)
         self.qtgui_const_sink_x_0 = qtgui.const_sink_c(
         	1024, #size
         	"", #name
@@ -156,7 +245,7 @@ class psk_modulation_demodulation(gr.top_block, Qt.QWidget):
             self.qtgui_const_sink_x_0.set_line_alpha(i, alphas[i])
         
         self._qtgui_const_sink_x_0_win = sip.wrapinstance(self.qtgui_const_sink_x_0.pyqwidget(), Qt.QWidget)
-        self.top_layout.addWidget(self._qtgui_const_sink_x_0_win)
+        self.top_grid_layout.addWidget(self._qtgui_const_sink_x_0_win, 1,1)
         self.digital_psk_demod_0 = digital.psk.psk_demod(
           constellation_points=4,
           differential=True,
@@ -169,6 +258,7 @@ class psk_modulation_demodulation(gr.top_block, Qt.QWidget):
           log=False,
           )
         self.digital_chunks_to_symbols_xx_0 = digital.chunks_to_symbols_bc(([1+1j, 1-1j, -1+1j, -1-1j]), 1)
+        self.blocks_uchar_to_float_1 = blocks.uchar_to_float()
         self.blocks_uchar_to_float_0 = blocks.uchar_to_float()
         self.blocks_throttle_0 = blocks.throttle(gr.sizeof_gr_complex*1, samp_rate,True)
         self.blocks_add_xx_0 = blocks.add_vcc(1)
@@ -179,12 +269,15 @@ class psk_modulation_demodulation(gr.top_block, Qt.QWidget):
         # Connections
         ##################################################
         self.connect((self.analog_noise_source_x_0, 0), (self.blocks_add_xx_0, 1))    
+        self.connect((self.analog_random_source_x_0, 0), (self.blocks_uchar_to_float_1, 0))    
         self.connect((self.analog_random_source_x_0, 0), (self.digital_chunks_to_symbols_xx_0, 0))    
         self.connect((self.blocks_add_xx_0, 0), (self.blocks_throttle_0, 0))    
         self.connect((self.blocks_add_xx_0, 0), (self.digital_psk_demod_0, 0))    
         self.connect((self.blocks_throttle_0, 0), (self.qtgui_const_sink_x_0, 0))    
         self.connect((self.blocks_uchar_to_float_0, 0), (self.qtgui_time_sink_x_0, 0))    
+        self.connect((self.blocks_uchar_to_float_1, 0), (self.qtgui_time_sink_x_0_0, 0))    
         self.connect((self.digital_chunks_to_symbols_xx_0, 0), (self.blocks_add_xx_0, 0))    
+        self.connect((self.digital_chunks_to_symbols_xx_0, 0), (self.qtgui_const_sink_x_0_0, 0))    
         self.connect((self.digital_psk_demod_0, 0), (self.blocks_uchar_to_float_0, 0))    
 
     def closeEvent(self, event):
@@ -197,6 +290,7 @@ class psk_modulation_demodulation(gr.top_block, Qt.QWidget):
 
     def set_samp_rate(self, samp_rate):
         self.samp_rate = samp_rate
+        self.qtgui_time_sink_x_0_0.set_samp_rate(self.samp_rate)
         self.qtgui_time_sink_x_0.set_samp_rate(self.samp_rate)
         self.blocks_throttle_0.set_sample_rate(self.samp_rate)
 
