@@ -22,7 +22,7 @@
     </param>
     <param>
       <key>description</key>
-      <value></value>
+      <value>Read a .dat file </value>
     </param>
     <param>
       <key>_enabled</key>
@@ -289,7 +289,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(408, 88)</value>
+      <value>(416, 92)</value>
     </param>
     <param>
       <key>_rotation</key>

@@ -4,7 +4,8 @@
 # GNU Radio Python Flow Graph
 # Title: AM singal @RX
 # Author: Alexandros-Apostolos A. Boulogeorgos
-# Generated: Wed Aug  7 14:53:22 2019
+# Description: Read a .dat file 
+# Generated: Sat Aug 10 07:10:02 2019
 ##################################################
 
 if __name__ == '__main__':
