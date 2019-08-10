@@ -8,7 +8,7 @@ Copyright 2019, Alexandros-Apostolos A. Boulogeorgos. All rights reserved.
 Alexandros Apostolos A. Boulogeorgos (e-mail: al.boulogeorgos@ieee.org)
 
 ## Description  
-This is a simple example that demonstrates hiw to add tags in curves using gnuradio.
+This is a simple example that demonstrates how to add tags in curves using gnuradio.
 
 ## Topology
 
