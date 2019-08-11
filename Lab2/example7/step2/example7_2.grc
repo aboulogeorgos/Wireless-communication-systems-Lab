@@ -93,6 +93,33 @@
     </param>
     <param>
       <key>_coordinate</key>
+      <value>(280, 12)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>number_of_taps</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>64</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
       <value>(184, 12)</value>
     </param>
     <param>
@@ -250,7 +277,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(312, 148)</value>
+      <value>(368, 148)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -270,7 +297,7 @@
     </param>
     <param>
       <key>num_taps</key>
-      <value>64</value>
+      <value>number_of_taps</value>
     </param>
     <param>
       <key>win</key>
@@ -301,7 +328,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(192, 248)</value>
+      <value>(192, 280)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -388,7 +415,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(472, 128)</value>
+      <value>(528, 128)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -475,7 +502,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(352, 200)</value>
+      <value>(360, 208)</value>
     </param>
     <param>
       <key>_rotation</key>

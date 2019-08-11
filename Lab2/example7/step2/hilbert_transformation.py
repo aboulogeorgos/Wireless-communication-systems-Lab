@@ -4,7 +4,7 @@
 # GNU Radio Python Flow Graph
 # Title: Hilbert Transformation
 # Author: Alexandros-Apostolos A. Boulogeorgos
-# Generated: Mon Aug  5 11:09:01 2019
+# Generated: Sat Aug 10 09:21:07 2019
 ##################################################
 
 if __name__ == '__main__':
@@ -40,6 +40,7 @@ class hilbert_transformation(grc_wxgui.top_block_gui):
         # Variables
         ##################################################
         self.samp_rate = samp_rate = 32000
+        self.number_of_taps = number_of_taps = 64
 
         ##################################################
         # Blocks
@@ -86,7 +87,7 @@ class hilbert_transformation(grc_wxgui.top_block_gui):
         	y_axis_label='Counts',
         )
         self.Add(self.wxgui_scopesink2_0.win)
-        self.hilbert_fc_0 = filter.hilbert_fc(64, firdes.WIN_HAMMING, 6.76)
+        self.hilbert_fc_0 = filter.hilbert_fc(number_of_taps, firdes.WIN_HAMMING, 6.76)
         self.blocks_throttle_0 = blocks.throttle(gr.sizeof_float*1, samp_rate,True)
         self.analog_sig_source_x_0 = analog.sig_source_f(samp_rate, analog.GR_SQR_WAVE, 1000, 1, 0)
 
@@ -109,6 +110,12 @@ class hilbert_transformation(grc_wxgui.top_block_gui):
         self.wxgui_scopesink2_0.set_sample_rate(self.samp_rate)
         self.blocks_throttle_0.set_sample_rate(self.samp_rate)
         self.analog_sig_source_x_0.set_sampling_freq(self.samp_rate)
+
+    def get_number_of_taps(self):
+        return self.number_of_taps
+
+    def set_number_of_taps(self, number_of_taps):
+        self.number_of_taps = number_of_taps
 
 
 def main(top_block_cls=hilbert_transformation, options=None):
