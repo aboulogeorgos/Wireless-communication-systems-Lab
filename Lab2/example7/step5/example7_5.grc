@@ -128,7 +128,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(656, 128)</value>
+      <value>(656, 144)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -175,7 +175,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(16, 112)</value>
+      <value>(16, 132)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -226,7 +226,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(232, 120)</value>
+      <value>(232, 140)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -289,7 +289,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(424, 120)</value>
+      <value>(408, 136)</value>
     </param>
     <param>
       <key>_rotation</key>
