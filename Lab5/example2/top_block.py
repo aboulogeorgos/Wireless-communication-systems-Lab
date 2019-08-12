@@ -2,8 +2,9 @@
 # -*- coding: utf-8 -*-
 ##################################################
 # GNU Radio Python Flow Graph
-# Title: Top Block
-# Generated: Mon Aug 12 08:13:30 2019
+# Title: Clipping effect demonstration
+# Author: Alexandros-Apostolos A. Boulogeorgos
+# Generated: Mon Aug 12 08:18:48 2019
 ##################################################
 
 if __name__ == '__main__':
@@ -36,9 +37,9 @@ import sys
 class top_block(gr.top_block, Qt.QWidget):
 
     def __init__(self):
-        gr.top_block.__init__(self, "Top Block")
+        gr.top_block.__init__(self, "Clipping effect demonstration")
         Qt.QWidget.__init__(self)
-        self.setWindowTitle("Top Block")
+        self.setWindowTitle("Clipping effect demonstration")
         try:
             self.setWindowIcon(Qt.QIcon.fromTheme('gnuradio-grc'))
         except:

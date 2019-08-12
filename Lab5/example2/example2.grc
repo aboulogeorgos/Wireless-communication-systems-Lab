@@ -6,7 +6,7 @@
     <key>options</key>
     <param>
       <key>author</key>
-      <value></value>
+      <value>Alexandros-Apostolos A. Boulogeorgos</value>
     </param>
     <param>
       <key>window_size</key>
@@ -78,7 +78,7 @@
     </param>
     <param>
       <key>title</key>
-      <value></value>
+      <value>Clipping effect demonstration</value>
     </param>
   </block>
   <block>
@@ -97,7 +97,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(784, 12)</value>
+      <value>(888, 12)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -160,7 +160,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(648, 12)</value>
+      <value>(752, 12)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -223,7 +223,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(152, 12)</value>
+      <value>(280, 12)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -322,7 +322,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(392, 12)</value>
+      <value>(512, 12)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -381,7 +381,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(8, 164)</value>
+      <value>(176, 12)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -412,7 +412,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(512, 12)</value>
+      <value>(624, 12)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -475,7 +475,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(272, 12)</value>
+      <value>(400, 12)</value>
     </param>
     <param>
       <key>gui_hint</key>
