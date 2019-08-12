@@ -2,8 +2,9 @@
 # -*- coding: utf-8 -*-
 ##################################################
 # GNU Radio Python Flow Graph
-# Title: Mpsk
-# Generated: Wed Aug  7 14:47:54 2019
+# Title: QPSK
+# Author: Alexandros-Apostolos A. Boulogeorgos
+# Generated: Mon Aug 12 16:04:57 2019
 ##################################################
 
 if __name__ == '__main__':
@@ -34,9 +35,9 @@ import sys
 class mpsk(gr.top_block, Qt.QWidget):
 
     def __init__(self):
-        gr.top_block.__init__(self, "Mpsk")
+        gr.top_block.__init__(self, "QPSK")
         Qt.QWidget.__init__(self)
-        self.setWindowTitle("Mpsk")
+        self.setWindowTitle("QPSK")
         try:
             self.setWindowIcon(Qt.QIcon.fromTheme('gnuradio-grc'))
         except:

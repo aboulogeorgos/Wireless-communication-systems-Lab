@@ -6,7 +6,7 @@
     <key>options</key>
     <param>
       <key>author</key>
-      <value></value>
+      <value>Alexandros-Apostolos A. Boulogeorgos</value>
     </param>
     <param>
       <key>window_size</key>
@@ -78,7 +78,7 @@
     </param>
     <param>
       <key>title</key>
-      <value></value>
+      <value>QPSK</value>
     </param>
   </block>
   <block>
@@ -93,7 +93,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(240, 12)</value>
+      <value>(272, 12)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -120,7 +120,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(368, 12)</value>
+      <value>(400, 12)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -151,7 +151,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(8, 184)</value>
+      <value>(192, 200)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -206,7 +206,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(456, 12)</value>
+      <value>(496, 12)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -233,7 +233,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(152, 12)</value>
+      <value>(184, 12)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -260,7 +260,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(304, 12)</value>
+      <value>(336, 12)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -295,7 +295,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(16, 88)</value>
+      <value>(16, 104)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -354,7 +354,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(392, 108)</value>
+      <value>(416, 124)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -421,7 +421,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(184, 88)</value>
+      <value>(192, 104)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -476,7 +476,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(552, 220)</value>
+      <value>(584, 220)</value>
     </param>
     <param>
       <key>_rotation</key>
