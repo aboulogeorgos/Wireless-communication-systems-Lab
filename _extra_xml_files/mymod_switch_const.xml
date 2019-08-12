@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<block>
+  <name>switch_const</name>
+  <key>mymod_switch_const</key>
+  <category>mymod</category>
+  <import>import mymod</import>
+  <make>mymod.switch_const($constell0, $constell1)</make>
+
+  <param>
+    <name>Constellation0</name>
+    <key>constell0</key>
+    <type>raw</type>
+  </param>
+
+  <param>
+    <name>Constellation1</name>
+    <key>constell1</key>
+    <type>raw</type>
+  </param>
+
+  <sink>
+    <name>in</name>
+    <type>complex</type>
+  </sink>
+
+  <sink>
+    <name>trig</name>
+    <type>message</type>
+    <optional>1</optional>
+  </sink>
+
+  <source>
+    <name>msg</name>
+    <type>message</type>
+  </source>
+</block>

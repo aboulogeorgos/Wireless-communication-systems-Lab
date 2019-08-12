@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<block>
+  <name>Energy Detect</name>
+  <key>mymod_energy_detect</key>
+  <category>mymod</category>
+  <import>import mymod</import>
+  <make>mymod.energy_detect()</make>
+
+  <sink>
+    <name>in</name>
+    <type>complex</type>
+  </sink>
+
+  <sink>
+    <name>cal</name>
+    <type>message</type>
+    <optional>1</optional>
+  </sink>
+
+  <source>
+    <name>det</name>
+    <type>message</type>
+    <optional>1</optional>
+  </source>
+
+</block>

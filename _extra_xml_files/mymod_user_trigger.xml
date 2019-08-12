@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<block>
+  <name>User Trigger</name>
+  <key>mymod_user_trigger</key>
+  <category>mymod</category>
+  <import>import mymod</import>
+  <make>mymod.user_trigger()</make>
+  <callback>trigger($msg)</callback>
+
+  <param>
+    <name>Trigger</name>
+    <key>msg</key>
+    <type>bool</type>
+  </param>
+
+  <source>
+    <name>trig</name>
+    <type>message</type>
+    <optional>1</optional>
+  </source>
+</block>

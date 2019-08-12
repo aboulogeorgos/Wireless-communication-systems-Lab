@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<block>
+  <name>c_fir_filter</name>
+  <key>mymod_c_fir_filter</key>
+  <category>mymod</category>
+  <import>import mymod</import>
+  <import>from gnuradio.filter import firdes</import>
+  <make>mymod.c_fir_filter($decim, $newtaps)</make>
+
+  <param>
+    <name>Decimation</name>
+    <key>decim</key>
+    <value>1</value>
+    <type>int</type>
+  </param>
+
+  <param>
+    <name>Taps</name>
+    <key>newtaps</key>
+    <type>float_vector</type>
+  </param>
+
+  <sink>
+    <name>in</name>
+    <type>float</type>
+  </sink>
+
+  <source>
+    <name>out</name>
+    <type>float</type>
+  </source>
+</block>
