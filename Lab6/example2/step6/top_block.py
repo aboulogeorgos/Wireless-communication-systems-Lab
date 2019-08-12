@@ -3,7 +3,8 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Mon Aug 12 17:12:14 2019
+# Author: Alexandros-Apostolos A. Boulogeorgos
+# Generated: Mon Aug 12 17:13:42 2019
 ##################################################
 
 if __name__ == '__main__':
