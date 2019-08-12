@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <?grc format='1' created='3.7.10'?>
 <flow_graph>
-  <timestamp>Mon Aug 12 10:18:44 2019</timestamp>
+  <timestamp>Mon Aug 12 10:26:09 2019</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -46,7 +46,7 @@
     </param>
     <param>
       <key>id</key>
-      <value>qpsk_modulation_multiplied_with_a_constant</value>
+      <value>qpsk_under_STO_CFO</value>
     </param>
     <param>
       <key>max_nouts</key>
@@ -93,7 +93,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(192, 12)</value>
+      <value>(200, 4)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -109,10 +109,14 @@
     </param>
   </block>
   <block>
-    <key>variable</key>
+    <key>variable_qtgui_range</key>
     <param>
       <key>comment</key>
       <value></value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>0</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -120,7 +124,11 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(320, 12)</value>
+      <value>(264, 76)</value>
+    </param>
+    <param>
+      <key>gui_hint</key>
+      <value>4,1,1,1</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -128,11 +136,102 @@
     </param>
     <param>
       <key>id</key>
-      <value>samp_rate</value>
+      <value>freq_offset</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>Channel: Frequency Offset</value>
+    </param>
+    <param>
+      <key>min_len</key>
+      <value>200</value>
+    </param>
+    <param>
+      <key>orient</key>
+      <value>Qt.Horizontal</value>
+    </param>
+    <param>
+      <key>start</key>
+      <value>-0.1</value>
+    </param>
+    <param>
+      <key>step</key>
+      <value>0.001</value>
+    </param>
+    <param>
+      <key>stop</key>
+      <value>0.1</value>
+    </param>
+    <param>
+      <key>rangeType</key>
+      <value>float</value>
+    </param>
+    <param>
+      <key>widget</key>
+      <value>slider</value>
+    </param>
+  </block>
+  <block>
+    <key>variable_qtgui_range</key>
+    <param>
+      <key>comment</key>
+      <value></value>
     </param>
     <param>
       <key>value</key>
-      <value>32000</value>
+      <value>0.0001</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(96, 76)</value>
+    </param>
+    <param>
+      <key>gui_hint</key>
+      <value>3,1,1,1</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>noise_volt</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>Channel: Noise Voltage</value>
+    </param>
+    <param>
+      <key>min_len</key>
+      <value>200</value>
+    </param>
+    <param>
+      <key>orient</key>
+      <value>Qt.Horizontal</value>
+    </param>
+    <param>
+      <key>start</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>step</key>
+      <value>0.01</value>
+    </param>
+    <param>
+      <key>stop</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>rangeType</key>
+      <value>float</value>
+    </param>
+    <param>
+      <key>widget</key>
+      <value>slider</value>
     </param>
   </block>
   <block>
@@ -147,7 +246,34 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(256, 12)</value>
+      <value>(336, 4)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>samp_rate</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>3200000</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(272, 4)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -160,6 +286,123 @@
     <param>
       <key>value</key>
       <value>4</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(432, 4)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>taps</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>[1.0 + 0.0j, ]</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(496, 4)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>taps</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>[1.0, 0.25-0.25j, 0.50 + 0.10j, -0.3 + 0.2j, 0.1 - 0.01j, -0.2 + 0.2j]</value>
+    </param>
+  </block>
+  <block>
+    <key>variable_qtgui_range</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>1.00</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(424, 76)</value>
+    </param>
+    <param>
+      <key>gui_hint</key>
+      <value>5,1,1,1</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>time_offset</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>Channel: Timing Offset</value>
+    </param>
+    <param>
+      <key>min_len</key>
+      <value>200</value>
+    </param>
+    <param>
+      <key>orient</key>
+      <value>Qt.Horizontal</value>
+    </param>
+    <param>
+      <key>start</key>
+      <value>0.999</value>
+    </param>
+    <param>
+      <key>step</key>
+      <value>0.0001</value>
+    </param>
+    <param>
+      <key>stop</key>
+      <value>1.001</value>
+    </param>
+    <param>
+      <key>rangeType</key>
+      <value>float</value>
+    </param>
+    <param>
+      <key>widget</key>
+      <value>slider</value>
     </param>
   </block>
   <block>
@@ -182,7 +425,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(8, 96)</value>
+      <value>(8, 216)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -233,7 +476,7 @@
     </param>
     <param>
       <key>const</key>
-      <value>1+1j</value>
+      <value>.5+.5j</value>
     </param>
     <param>
       <key>affinity</key>
@@ -245,7 +488,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(408, 116)</value>
+      <value>(416, 236)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -292,7 +535,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(568, 116)</value>
+      <value>(816, 236)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -328,6 +571,69 @@
     </param>
   </block>
   <block>
+    <key>channels_channel_model</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>block_tags</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>epsilon</key>
+      <value>time_offset</value>
+    </param>
+    <param>
+      <key>freq_offset</key>
+      <value>freq_offset</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(592, 212)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>channels_channel_model_0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>noise_voltage</key>
+      <value>noise_volt</value>
+    </param>
+    <param>
+      <key>seed</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>taps</key>
+      <value>taps</value>
+    </param>
+  </block>
+  <block>
     <key>digital_psk_mod</key>
     <param>
       <key>alias</key>
@@ -355,7 +661,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(160, 92)</value>
+      <value>(176, 212)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -395,7 +701,7 @@
     </param>
   </block>
   <block>
-    <key>note</key>
+    <key>import</key>
     <param>
       <key>alias</key>
       <value></value>
@@ -410,7 +716,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(160, 188)</value>
+      <value>(8, 68)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -418,42 +724,11 @@
     </param>
     <param>
       <key>id</key>
-      <value>note_0</value>
+      <value>import_math</value>
     </param>
     <param>
-      <key>note</key>
-      <value>QPSK constellation</value>
-    </param>
-  </block>
-  <block>
-    <key>note</key>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(408, 60)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>note_0_0</value>
-    </param>
-    <param>
-      <key>note</key>
-      <value>Multiplication with a constant</value>
+      <key>import</key>
+      <value>import math</value>
     </param>
   </block>
   <block>
@@ -484,7 +759,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(728, 128)</value>
+      <value>(992, 264)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -748,7 +1023,7 @@
     </param>
     <param>
       <key>name</key>
-      <value>QT GUI Plot: After multiplication</value>
+      <value>QT GUI Plot</value>
     </param>
     <param>
       <key>nconnections</key>
@@ -831,7 +1106,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(408, 344)</value>
+      <value>(600, 424)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -1095,7 +1370,7 @@
     </param>
     <param>
       <key>name</key>
-      <value>QT GUI Plot: Before multiplication</value>
+      <value>QT GUI Plot: Before Channel model Block</value>
     </param>
     <param>
       <key>nconnections</key>
@@ -1198,7 +1473,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(728, 208)</value>
+      <value>(992, 360)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -1390,7 +1665,7 @@
     </param>
     <param>
       <key>name</key>
-      <value>QT GUI Plot: After multiplication</value>
+      <value>QT GUI Plot</value>
     </param>
     <param>
       <key>nconnections</key>
@@ -1497,7 +1772,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(408, 416)</value>
+      <value>(600, 496)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -1513,7 +1788,7 @@
     </param>
     <param>
       <key>id</key>
-      <value>qtgui_freq_sink_x_0_0</value>
+      <value>qtgui_freq_sink_x_0_1</value>
     </param>
     <param>
       <key>legend</key>
@@ -1689,7 +1964,7 @@
     </param>
     <param>
       <key>name</key>
-      <value>QT GUI Plot: Before multiplication</value>
+      <value>QT GUI Plot: Before Channel Model Block</value>
     </param>
     <param>
       <key>nconnections</key>
@@ -1784,7 +2059,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(728, 32)</value>
+      <value>(992, 160)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -2048,7 +2323,7 @@
     </param>
     <param>
       <key>name</key>
-      <value>QT GUI Plot: After multiplication</value>
+      <value>QT GUI Plot</value>
     </param>
     <param>
       <key>nconnections</key>
@@ -2056,7 +2331,7 @@
     </param>
     <param>
       <key>size</key>
-      <value>1024</value>
+      <value>200</value>
     </param>
     <param>
       <key>srate</key>
@@ -2147,7 +2422,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(408, 256)</value>
+      <value>(600, 336)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -2411,7 +2686,7 @@
     </param>
     <param>
       <key>name</key>
-      <value>QT GUI Plot: Before multiplication</value>
+      <value>QT GUI Plot: Before Channel Model Block</value>
     </param>
     <param>
       <key>nconnections</key>
@@ -2419,7 +2694,7 @@
     </param>
     <param>
       <key>size</key>
-      <value>1024</value>
+      <value>200</value>
     </param>
     <param>
       <key>srate</key>
@@ -2482,7 +2757,25 @@
   </connection>
   <connection>
     <source_block_id>blocks_multiply_const_vxx_0</source_block_id>
-    <sink_block_id>blocks_throttle_0</sink_block_id>
+    <sink_block_id>channels_channel_model_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_multiply_const_vxx_0</source_block_id>
+    <sink_block_id>qtgui_const_sink_x_0_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_multiply_const_vxx_0</source_block_id>
+    <sink_block_id>qtgui_freq_sink_x_0_1</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_multiply_const_vxx_0</source_block_id>
+    <sink_block_id>qtgui_time_sink_x_0_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
@@ -2505,26 +2798,14 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
+    <source_block_id>channels_channel_model_0</source_block_id>
+    <sink_block_id>blocks_throttle_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
     <source_block_id>digital_psk_mod_0</source_block_id>
     <sink_block_id>blocks_multiply_const_vxx_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>digital_psk_mod_0</source_block_id>
-    <sink_block_id>qtgui_const_sink_x_0_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>digital_psk_mod_0</source_block_id>
-    <sink_block_id>qtgui_freq_sink_x_0_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>digital_psk_mod_0</source_block_id>
-    <sink_block_id>qtgui_time_sink_x_0_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
