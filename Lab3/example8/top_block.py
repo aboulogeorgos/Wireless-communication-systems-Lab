@@ -3,7 +3,8 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Wed Aug 14 08:11:10 2019
+# Author: Alexandros-Apostolos A. Boulogeorgos
+# Generated: Wed Aug 14 09:32:51 2019
 ##################################################
 
 if __name__ == '__main__':
@@ -63,7 +64,7 @@ class top_block(gr.top_block, Qt.QWidget):
         self.sps = sps = 8
         self.nfilts = nfilts = 128
         self.timing_loop_bandwidth = timing_loop_bandwidth = .063
-        self.samp_rate = samp_rate = 32000
+        self.samp_rate = samp_rate = 100000
         self.rrc_taps = rrc_taps = firdes.root_raised_cosine(nfilts, nfilts, 1.0/float(sps), 0.35, 45*nfilts)
         self.noise_voltage = noise_voltage = .063
         self.freq_offset = freq_offset = 0
