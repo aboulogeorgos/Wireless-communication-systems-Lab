@@ -3,8 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Author: Alexandros-Apostolos A. Boulogeorgos
-# Generated: Wed Aug 14 10:34:49 2019
+# Generated: Wed Aug 14 10:43:17 2019
 ##################################################
 
 if __name__ == '__main__':
@@ -27,7 +26,6 @@ from gnuradio import qtgui
 from gnuradio.eng_option import eng_option
 from gnuradio.filter import firdes
 from gnuradio.qtgui import Range, RangeWidget
-from grc_gnuradio import blks2 as grc_blks2
 from optparse import OptionParser
 import sip
 import sys
@@ -71,7 +69,7 @@ class top_block(gr.top_block, Qt.QWidget):
         self.code2 = code2 = '11011010110111011000110011110101100010010011110111'
         self.code1 = code1 = '010110011011101100010101011111101001001110001011010001101010001'
         
-        self.BPSK = BPSK = digital.constellation_calcdist(([-1, 1]), ([0, 1]), 4, 1).base()
+        self.QPSK = QPSK = digital.constellation_calcdist(([0.707+0.707j, -0.707+0.707j, -0.707-0.707j, 0.707-0.707j]), ([0, 1, 2, 3]), 4, 1).base()
         
 
         ##################################################
@@ -83,6 +81,53 @@ class top_block(gr.top_block, Qt.QWidget):
         self._noise_voltage_range = Range(0.0, 1, .001, .063, 200)
         self._noise_voltage_win = RangeWidget(self._noise_voltage_range, self.set_noise_voltage, "noise_voltage", "counter_slider", float)
         self.top_grid_layout.addWidget(self._noise_voltage_win, 0,1,1,1)
+        self.qtgui_time_sink_x_0_0_0 = qtgui.time_sink_f(
+        	15, #size
+        	samp_rate, #samp_rate
+        	"", #name
+        	1 #number of inputs
+        )
+        self.qtgui_time_sink_x_0_0_0.set_update_time(0.10)
+        self.qtgui_time_sink_x_0_0_0.set_y_axis(-1, 1)
+        
+        self.qtgui_time_sink_x_0_0_0.set_y_label('Amplitude', "")
+        
+        self.qtgui_time_sink_x_0_0_0.enable_tags(-1, True)
+        self.qtgui_time_sink_x_0_0_0.set_trigger_mode(qtgui.TRIG_MODE_FREE, qtgui.TRIG_SLOPE_POS, 0.0, 0, 0, "")
+        self.qtgui_time_sink_x_0_0_0.enable_autoscale(False)
+        self.qtgui_time_sink_x_0_0_0.enable_grid(True)
+        self.qtgui_time_sink_x_0_0_0.enable_axis_labels(True)
+        self.qtgui_time_sink_x_0_0_0.enable_control_panel(False)
+        
+        if not True:
+          self.qtgui_time_sink_x_0_0_0.disable_legend()
+        
+        labels = ['Real part', 'Imaginary Part', '', '', '',
+                  '', '', '', '', '']
+        widths = [1, 1, 1, 1, 1,
+                  1, 1, 1, 1, 1]
+        colors = ["blue", "red", "green", "black", "cyan",
+                  "magenta", "yellow", "dark red", "dark green", "blue"]
+        styles = [0, 0, 1, 1, 1,
+                  1, 1, 1, 1, 1]
+        markers = [0, 0, -1, -1, -1,
+                   -1, -1, -1, -1, -1]
+        alphas = [1.0, 1.0, 1.0, 1.0, 1.0,
+                  1.0, 1.0, 1.0, 1.0, 1.0]
+        
+        for i in xrange(1):
+            if len(labels[i]) == 0:
+                self.qtgui_time_sink_x_0_0_0.set_line_label(i, "Data {0}".format(i))
+            else:
+                self.qtgui_time_sink_x_0_0_0.set_line_label(i, labels[i])
+            self.qtgui_time_sink_x_0_0_0.set_line_width(i, widths[i])
+            self.qtgui_time_sink_x_0_0_0.set_line_color(i, colors[i])
+            self.qtgui_time_sink_x_0_0_0.set_line_style(i, styles[i])
+            self.qtgui_time_sink_x_0_0_0.set_line_marker(i, markers[i])
+            self.qtgui_time_sink_x_0_0_0.set_line_alpha(i, alphas[i])
+        
+        self._qtgui_time_sink_x_0_0_0_win = sip.wrapinstance(self.qtgui_time_sink_x_0_0_0.pyqwidget(), Qt.QWidget)
+        self.top_grid_layout.addWidget(self._qtgui_time_sink_x_0_0_0_win, 2,1, 1, 1)
         self.qtgui_time_sink_x_0_0 = qtgui.time_sink_c(
         	15, #size
         	samp_rate, #samp_rate
@@ -132,54 +177,7 @@ class top_block(gr.top_block, Qt.QWidget):
             self.qtgui_time_sink_x_0_0.set_line_alpha(i, alphas[i])
         
         self._qtgui_time_sink_x_0_0_win = sip.wrapinstance(self.qtgui_time_sink_x_0_0.pyqwidget(), Qt.QWidget)
-        self.top_grid_layout.addWidget(self._qtgui_time_sink_x_0_0_win, 1,1,1,1)
-        self.qtgui_time_sink_x_0 = qtgui.time_sink_f(
-        	15, #size
-        	samp_rate, #samp_rate
-        	"", #name
-        	1 #number of inputs
-        )
-        self.qtgui_time_sink_x_0.set_update_time(0.10)
-        self.qtgui_time_sink_x_0.set_y_axis(-1, 1)
-        
-        self.qtgui_time_sink_x_0.set_y_label('Amplitude', "")
-        
-        self.qtgui_time_sink_x_0.enable_tags(-1, True)
-        self.qtgui_time_sink_x_0.set_trigger_mode(qtgui.TRIG_MODE_FREE, qtgui.TRIG_SLOPE_POS, 0.0, 0, 0, "")
-        self.qtgui_time_sink_x_0.enable_autoscale(False)
-        self.qtgui_time_sink_x_0.enable_grid(True)
-        self.qtgui_time_sink_x_0.enable_axis_labels(True)
-        self.qtgui_time_sink_x_0.enable_control_panel(False)
-        
-        if not True:
-          self.qtgui_time_sink_x_0.disable_legend()
-        
-        labels = ['Binary output (1 or 0)', '', '', '', '',
-                  '', '', '', '', '']
-        widths = [1, 1, 1, 1, 1,
-                  1, 1, 1, 1, 1]
-        colors = ["blue", "red", "green", "black", "cyan",
-                  "magenta", "yellow", "dark red", "dark green", "blue"]
-        styles = [0, 1, 1, 1, 1,
-                  1, 1, 1, 1, 1]
-        markers = [0, -1, -1, -1, -1,
-                   -1, -1, -1, -1, -1]
-        alphas = [1.0, 1.0, 1.0, 1.0, 1.0,
-                  1.0, 1.0, 1.0, 1.0, 1.0]
-        
-        for i in xrange(1):
-            if len(labels[i]) == 0:
-                self.qtgui_time_sink_x_0.set_line_label(i, "Data {0}".format(i))
-            else:
-                self.qtgui_time_sink_x_0.set_line_label(i, labels[i])
-            self.qtgui_time_sink_x_0.set_line_width(i, widths[i])
-            self.qtgui_time_sink_x_0.set_line_color(i, colors[i])
-            self.qtgui_time_sink_x_0.set_line_style(i, styles[i])
-            self.qtgui_time_sink_x_0.set_line_marker(i, markers[i])
-            self.qtgui_time_sink_x_0.set_line_alpha(i, alphas[i])
-        
-        self._qtgui_time_sink_x_0_win = sip.wrapinstance(self.qtgui_time_sink_x_0.pyqwidget(), Qt.QWidget)
-        self.top_grid_layout.addWidget(self._qtgui_time_sink_x_0_win, 2,0,1,1)
+        self.top_grid_layout.addWidget(self._qtgui_time_sink_x_0_0_win, 1, 1, 1, 1)
         self.qtgui_const_sink_x_0 = qtgui.const_sink_c(
         	1024, #size
         	"", #name
@@ -222,10 +220,8 @@ class top_block(gr.top_block, Qt.QWidget):
         self._qtgui_const_sink_x_0_win = sip.wrapinstance(self.qtgui_const_sink_x_0.pyqwidget(), Qt.QWidget)
         self.top_grid_layout.addWidget(self._qtgui_const_sink_x_0_win, 1,0,1,1)
         self.digital_pfb_clock_sync_xxx_0 = digital.pfb_clock_sync_ccf(sps, timing_loop_bandwidth, (rrc_taps), nfilts, nfilts/2, 1.5, 1)
-        self.digital_diff_encoder_bb_0 = digital.diff_encoder_bb(2)
-        self.digital_diff_decoder_bb_0 = digital.diff_decoder_bb(2)
         self.digital_constellation_modulator_0 = digital.generic_mod(
-          constellation=BPSK,
+          constellation=QPSK,
           differential=False,
           samples_per_symbol=sps,
           pre_diff_code=True,
@@ -233,8 +229,7 @@ class top_block(gr.top_block, Qt.QWidget):
           verbose=False,
           log=False,
           )
-        self.digital_chunks_to_symbols_xx_0 = digital.chunks_to_symbols_bf((0,1), 1)
-        self.digital_binary_slicer_fb_0 = digital.binary_slicer_fb()
+        self.digital_constellation_decoder_cb_0 = digital.constellation_decoder_cb(QPSK)
         self.channels_channel_model_0 = channels.channel_model(
         	noise_voltage=noise_voltage,
         	frequency_offset=freq_offset/samp_rate,
@@ -243,51 +238,22 @@ class top_block(gr.top_block, Qt.QWidget):
         	noise_seed=0,
         	block_tags=False
         )
+        self.blocks_vector_source_x_0_0_0 = blocks.vector_source_b((1,0,1,1,0,1, 0, 0), True, 1, [])
         self.blocks_unpacked_to_packed_xx_0 = blocks.unpacked_to_packed_bb(1, gr.GR_MSB_FIRST)
-        self.blocks_throttle_0_0 = blocks.throttle(gr.sizeof_char*1, samp_rate,True)
         self.blocks_throttle_0 = blocks.throttle(gr.sizeof_char*1, samp_rate,True)
-        self.blocks_packed_to_unpacked_xx_0 = blocks.packed_to_unpacked_bb(1, gr.GR_MSB_FIRST)
-        self.blocks_float_to_char_0 = blocks.float_to_char(1, 1)
-        self.blocks_file_source_0 = blocks.file_source(gr.sizeof_char*1, '/Users/ampoulog/Documents/gnuradio/Wireless-communication-systems-Lab/Lab3/example6/cat.png', True)
-        self.blocks_file_sink_0 = blocks.file_sink(gr.sizeof_char*1, '/Users/ampoulog/Documents/gnuradio/Wireless-communication-systems-Lab/Lab3/example8/hello_out.png', False)
-        self.blocks_file_sink_0.set_unbuffered(True)
-        self.blocks_complex_to_real_0 = blocks.complex_to_real(1)
-        self.blks2_packet_encoder_0_0 = grc_blks2.packet_mod_b(grc_blks2.packet_encoder(
-        		samples_per_symbol=1,
-        		bits_per_symbol=1,
-        		preamble='',
-        		access_code=code2,
-        		pad_for_usrp=False,
-        	),
-        	payload_length=4,
-        )
-        self.blks2_packet_decoder_0 = grc_blks2.packet_demod_b(grc_blks2.packet_decoder(
-        		access_code=code2,
-        		threshold=-1,
-        		callback=lambda ok, payload: self.blks2_packet_decoder_0.recv_pkt(ok, payload),
-        	),
-        )
+        self.blocks_char_to_float_0 = blocks.char_to_float(1, 1)
 
         ##################################################
         # Connections
         ##################################################
-        self.connect((self.blks2_packet_decoder_0, 0), (self.blocks_file_sink_0, 0))    
-        self.connect((self.blks2_packet_encoder_0_0, 0), (self.blocks_packed_to_unpacked_xx_0, 0))    
-        self.connect((self.blocks_complex_to_real_0, 0), (self.digital_binary_slicer_fb_0, 0))    
-        self.connect((self.blocks_file_source_0, 0), (self.blocks_throttle_0, 0))    
-        self.connect((self.blocks_float_to_char_0, 0), (self.digital_diff_decoder_bb_0, 0))    
-        self.connect((self.blocks_packed_to_unpacked_xx_0, 0), (self.digital_diff_encoder_bb_0, 0))    
-        self.connect((self.blocks_throttle_0, 0), (self.blks2_packet_encoder_0_0, 0))    
-        self.connect((self.blocks_throttle_0_0, 0), (self.digital_constellation_modulator_0, 0))    
-        self.connect((self.blocks_unpacked_to_packed_xx_0, 0), (self.blocks_throttle_0_0, 0))    
+        self.connect((self.blocks_char_to_float_0, 0), (self.qtgui_time_sink_x_0_0_0, 0))    
+        self.connect((self.blocks_throttle_0, 0), (self.digital_constellation_modulator_0, 0))    
+        self.connect((self.blocks_unpacked_to_packed_xx_0, 0), (self.blocks_throttle_0, 0))    
+        self.connect((self.blocks_vector_source_x_0_0_0, 0), (self.blocks_unpacked_to_packed_xx_0, 0))    
         self.connect((self.channels_channel_model_0, 0), (self.digital_pfb_clock_sync_xxx_0, 0))    
-        self.connect((self.digital_binary_slicer_fb_0, 0), (self.digital_chunks_to_symbols_xx_0, 0))    
-        self.connect((self.digital_chunks_to_symbols_xx_0, 0), (self.blocks_float_to_char_0, 0))    
-        self.connect((self.digital_chunks_to_symbols_xx_0, 0), (self.qtgui_time_sink_x_0, 0))    
+        self.connect((self.digital_constellation_decoder_cb_0, 0), (self.blocks_char_to_float_0, 0))    
         self.connect((self.digital_constellation_modulator_0, 0), (self.channels_channel_model_0, 0))    
-        self.connect((self.digital_diff_decoder_bb_0, 0), (self.blks2_packet_decoder_0, 0))    
-        self.connect((self.digital_diff_encoder_bb_0, 0), (self.blocks_unpacked_to_packed_xx_0, 0))    
-        self.connect((self.digital_pfb_clock_sync_xxx_0, 0), (self.blocks_complex_to_real_0, 0))    
+        self.connect((self.digital_pfb_clock_sync_xxx_0, 0), (self.digital_constellation_decoder_cb_0, 0))    
         self.connect((self.digital_pfb_clock_sync_xxx_0, 0), (self.qtgui_const_sink_x_0, 0))    
         self.connect((self.digital_pfb_clock_sync_xxx_0, 0), (self.qtgui_time_sink_x_0_0, 0))    
 
@@ -322,10 +288,9 @@ class top_block(gr.top_block, Qt.QWidget):
 
     def set_samp_rate(self, samp_rate):
         self.samp_rate = samp_rate
+        self.qtgui_time_sink_x_0_0_0.set_samp_rate(self.samp_rate)
         self.qtgui_time_sink_x_0_0.set_samp_rate(self.samp_rate)
-        self.qtgui_time_sink_x_0.set_samp_rate(self.samp_rate)
         self.channels_channel_model_0.set_frequency_offset(self.freq_offset/self.samp_rate)
-        self.blocks_throttle_0_0.set_sample_rate(self.samp_rate)
         self.blocks_throttle_0.set_sample_rate(self.samp_rate)
 
     def get_rrc_taps(self):
@@ -361,11 +326,11 @@ class top_block(gr.top_block, Qt.QWidget):
     def set_code1(self, code1):
         self.code1 = code1
 
-    def get_BPSK(self):
-        return self.BPSK
+    def get_QPSK(self):
+        return self.QPSK
 
-    def set_BPSK(self, BPSK):
-        self.BPSK = BPSK
+    def set_QPSK(self, QPSK):
+        self.QPSK = QPSK
 
 
 def main(top_block_cls=top_block, options=None):
