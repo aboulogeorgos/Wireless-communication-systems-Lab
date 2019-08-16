@@ -3,7 +3,8 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Mpsk Rrc Rolloff
-# Generated: Fri Aug  2 10:22:21 2019
+# Author: Alexandros-Apostolos A. Boulogeorgos
+# Generated: Fri Aug 16 08:07:30 2019
 ##################################################
 
 if __name__ == '__main__':
