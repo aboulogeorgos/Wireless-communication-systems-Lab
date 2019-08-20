@@ -4,7 +4,7 @@
 # GNU Radio Python Flow Graph
 # Title: BPSK
 # Author: Alexandros-Apostolos A. Boulogeorgos
-# Generated: Fri Aug 16 18:06:23 2019
+# Generated: Mon Aug 19 19:03:00 2019
 ##################################################
 
 if __name__ == '__main__':
@@ -76,10 +76,10 @@ class bpsk(gr.top_block, Qt.QWidget):
         ##################################################
         self._timing_loop_bandwidth_range = Range(.001, .2, .001, .063, 200)
         self._timing_loop_bandwidth_win = RangeWidget(self._timing_loop_bandwidth_range, self.set_timing_loop_bandwidth, "timing_loop_bandwidth", "counter_slider", float)
-        self.top_layout.addWidget(self._timing_loop_bandwidth_win)
+        self.top_grid_layout.addWidget(self._timing_loop_bandwidth_win, 0,0,1,1)
         self._noise_voltage_range = Range(0.0, 1, .001, .063, 200)
         self._noise_voltage_win = RangeWidget(self._noise_voltage_range, self.set_noise_voltage, "noise_voltage", "counter_slider", float)
-        self.top_layout.addWidget(self._noise_voltage_win)
+        self.top_grid_layout.addWidget(self._noise_voltage_win, 0,1,1,1)
         self.qtgui_time_sink_x_0_0 = qtgui.time_sink_c(
         	15, #size
         	samp_rate, #samp_rate

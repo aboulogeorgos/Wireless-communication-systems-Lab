@@ -4,7 +4,7 @@
 # GNU Radio Python Flow Graph
 # Title: Bipolar NRZ over AWGN channel
 # Author: Alexandros-Apostolos A. Boulogeorgos
-# Generated: Fri Aug 16 08:48:05 2019
+# Generated: Mon Aug 19 18:58:58 2019
 ##################################################
 
 if __name__ == '__main__':
