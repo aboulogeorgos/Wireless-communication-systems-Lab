@@ -10,7 +10,7 @@
     </param>
     <param>
       <key>window_size</key>
-      <value>1000,400</value>
+      <value>1000,500</value>
     </param>
     <param>
       <key>category</key>
@@ -284,7 +284,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(352, 296)</value>
+      <value>(264, 152)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -339,7 +339,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(104, 280)</value>
+      <value>(16, 136)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -398,7 +398,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(528, 300)</value>
+      <value>(472, 156)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -579,7 +579,7 @@ def createNoise(centerFreq_Hz, bandwidth_Hz, sampleRate_Hz, numSamples):
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(688, 288)</value>
+      <value>(664, 144)</value>
     </param>
     <param>
       <key>gui_hint</key>

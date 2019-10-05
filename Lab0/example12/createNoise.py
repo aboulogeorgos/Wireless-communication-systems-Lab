@@ -5,7 +5,7 @@
 # Title: Create AWGN noise
 # Author: Alexandros-Apostolos A. Boulogeorgos
 # Description: Import python modules in gnuradio
-# Generated: Sat Oct  5 08:14:21 2019
+# Generated: Sat Oct  5 08:20:04 2019
 ##################################################
 
 if __name__ == '__main__':
