@@ -2,8 +2,9 @@
 # -*- coding: utf-8 -*-
 ##################################################
 # GNU Radio Python Flow Graph
-# Title: Top Block
-# Generated: Mon Sep 30 15:30:29 2019
+# Title: Boolean_or
+# Author: Alexandros-Apostolos A. Boulogeorgos
+# Generated: Mon Sep 30 17:06:43 2019
 ##################################################
 
 if __name__ == '__main__':
@@ -29,12 +30,12 @@ import sip
 import sys
 
 
-class top_block(gr.top_block, Qt.QWidget):
+class boolean_or(gr.top_block, Qt.QWidget):
 
     def __init__(self):
-        gr.top_block.__init__(self, "Top Block")
+        gr.top_block.__init__(self, "Boolean_or")
         Qt.QWidget.__init__(self)
-        self.setWindowTitle("Top Block")
+        self.setWindowTitle("Boolean_or")
         try:
             self.setWindowIcon(Qt.QIcon.fromTheme('gnuradio-grc'))
         except:
@@ -51,7 +52,7 @@ class top_block(gr.top_block, Qt.QWidget):
         self.top_grid_layout = Qt.QGridLayout()
         self.top_layout.addLayout(self.top_grid_layout)
 
-        self.settings = Qt.QSettings("GNU Radio", "top_block")
+        self.settings = Qt.QSettings("GNU Radio", "boolean_or")
         self.restoreGeometry(self.settings.value("geometry").toByteArray())
 
         ##################################################
@@ -97,24 +98,24 @@ class top_block(gr.top_block, Qt.QWidget):
         self.blocks_throttle_0_0_0 = blocks.throttle(gr.sizeof_int*1, samp_rate,True)
         self.blocks_throttle_0_0 = blocks.throttle(gr.sizeof_int*1, samp_rate,True)
         self.blocks_throttle_0 = blocks.throttle(gr.sizeof_int*1, samp_rate,True)
-        self.blocks_and_xx_0 = blocks.and_ii()
+        self.blocks_or_xx_0 = blocks.or_ii()
         self.analog_random_source_x_0_0 = blocks.vector_source_i(map(int, numpy.random.randint(0, 2, Ns)), True)
         self.analog_random_source_x_0 = blocks.vector_source_i(map(int, numpy.random.randint(0, 2, Ns)), True)
 
         ##################################################
         # Connections
         ##################################################
-        self.connect((self.analog_random_source_x_0, 0), (self.blocks_and_xx_0, 0))    
+        self.connect((self.analog_random_source_x_0, 0), (self.blocks_or_xx_0, 0))    
         self.connect((self.analog_random_source_x_0, 0), (self.blocks_throttle_0_0, 0))    
-        self.connect((self.analog_random_source_x_0_0, 0), (self.blocks_and_xx_0, 1))    
+        self.connect((self.analog_random_source_x_0_0, 0), (self.blocks_or_xx_0, 1))    
         self.connect((self.analog_random_source_x_0_0, 0), (self.blocks_throttle_0_0_0, 0))    
-        self.connect((self.blocks_and_xx_0, 0), (self.blocks_throttle_0, 0))    
+        self.connect((self.blocks_or_xx_0, 0), (self.blocks_throttle_0, 0))    
         self.connect((self.blocks_throttle_0, 0), (self.qtgui_number_sink_0, 2))    
         self.connect((self.blocks_throttle_0_0, 0), (self.qtgui_number_sink_0, 0))    
         self.connect((self.blocks_throttle_0_0_0, 0), (self.qtgui_number_sink_0, 1))    
 
     def closeEvent(self, event):
-        self.settings = Qt.QSettings("GNU Radio", "top_block")
+        self.settings = Qt.QSettings("GNU Radio", "boolean_or")
         self.settings.setValue("geometry", self.saveGeometry())
         event.accept()
 
@@ -134,7 +135,7 @@ class top_block(gr.top_block, Qt.QWidget):
         self.Ns = Ns
 
 
-def main(top_block_cls=top_block, options=None):
+def main(top_block_cls=boolean_or, options=None):
 
     from distutils.version import StrictVersion
     if StrictVersion(Qt.qVersion()) >= StrictVersion("4.5.0"):

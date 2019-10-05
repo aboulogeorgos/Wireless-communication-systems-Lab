@@ -4,7 +4,7 @@
 # GNU Radio Python Flow Graph
 # Title: OFDM in the presence of fast fading, channel and hardware impairments
 # Author: Alexandros-Apostolos A. Boulogeorgos
-# Generated: Mon Aug 19 15:39:38 2019
+# Generated: Wed Aug 28 16:30:23 2019
 ##################################################
 
 if __name__ == '__main__':
@@ -22,8 +22,10 @@ from gnuradio import blocks
 from gnuradio import channels
 from gnuradio import digital
 from gnuradio import eng_notation
+from gnuradio import fec
 from gnuradio import gr
 from gnuradio import qtgui
+from gnuradio.ctrlport.monitor import *
 from gnuradio.eng_option import eng_option
 from gnuradio.filter import firdes
 from gnuradio.qtgui import Range, RangeWidget
@@ -61,11 +63,14 @@ class ofdm_simulation(gr.top_block, Qt.QWidget):
         ##################################################
         # Variables
         ##################################################
+        self.vec_length = vec_length = 1
+        self.update_period = update_period = 0.10
         self.timing = timing = 1.0001
         self.samp_rate = samp_rate = 7.68e6
         self.q_offset = q_offset = 0
         self.phase_noise = phase_noise = 0
         self.packet_len = packet_len = 50
+        self.num_of_points = num_of_points = 1024
         self.noise = noise = 1.2
         self.len_tag_key = len_tag_key = "packet_len"
         self.iq_ph = iq_ph = 0
@@ -75,6 +80,7 @@ class ofdm_simulation(gr.top_block, Qt.QWidget):
         self.fft_len = fft_len = 128
         self.dist3 = dist3 = 0
         self.dist2 = dist2 = 0
+        self.cfo_std = cfo_std = 0.01
 
         ##################################################
         # Blocks
@@ -109,6 +115,9 @@ class ofdm_simulation(gr.top_block, Qt.QWidget):
         self._dist2_range = Range(0, 0.1, 0.0001, 0, 200)
         self._dist2_win = RangeWidget(self._dist2_range, self.set_dist2, '2nd Order Dist.', "slider", float)
         self.top_grid_layout.addWidget(self._dist2_win, 2,0,1,1)
+        self._cfo_std_range = Range(0, 0.1, 0.01, 0.01, 200)
+        self._cfo_std_win = RangeWidget(self._cfo_std_range, self.set_cfo_std, 'CFO standart deviation ', "slider", float)
+        self.top_grid_layout.addWidget(self._cfo_std_win, 2,2,1,1)
         self.qtgui_waterfall_sink_x_1_0 = qtgui.waterfall_sink_c(
         	1024, #size
         	firdes.WIN_BLACKMAN_hARRIS, #wintype
@@ -150,7 +159,7 @@ class ofdm_simulation(gr.top_block, Qt.QWidget):
         	firdes.WIN_BLACKMAN_hARRIS, #wintype
         	0, #fc
         	samp_rate, #bw
-        	"GT GUI Waterfall Sink- TX Output", #name
+        	"GT GUI Waterfall Sink-TX Output", #name
                 1 #number of inputs
         )
         self.qtgui_waterfall_sink_x_1.set_update_time(0.10)
@@ -180,7 +189,7 @@ class ofdm_simulation(gr.top_block, Qt.QWidget):
         self.qtgui_waterfall_sink_x_1.set_intensity_range(-140, 10)
         
         self._qtgui_waterfall_sink_x_1_win = sip.wrapinstance(self.qtgui_waterfall_sink_x_1.pyqwidget(), Qt.QWidget)
-        self.top_grid_layout.addWidget(self._qtgui_waterfall_sink_x_1_win, 3,2,1,1)
+        self.top_grid_layout.addWidget(self._qtgui_waterfall_sink_x_1_win, 3,3,1,1)
         self.qtgui_waterfall_sink_x_0 = qtgui.waterfall_sink_c(
         	1024, #size
         	firdes.WIN_BLACKMAN_hARRIS, #wintype
@@ -217,6 +226,100 @@ class ofdm_simulation(gr.top_block, Qt.QWidget):
         
         self._qtgui_waterfall_sink_x_0_win = sip.wrapinstance(self.qtgui_waterfall_sink_x_0.pyqwidget(), Qt.QWidget)
         self.top_grid_layout.addWidget(self._qtgui_waterfall_sink_x_0_win, 5,2,1,1)
+        self.qtgui_time_sink_x_0_1 = qtgui.time_sink_f(
+        	num_of_points, #size
+        	samp_rate, #samp_rate
+        	'Random source output', #name
+        	1 #number of inputs
+        )
+        self.qtgui_time_sink_x_0_1.set_update_time(update_period)
+        self.qtgui_time_sink_x_0_1.set_y_axis(-1, 1)
+        
+        self.qtgui_time_sink_x_0_1.set_y_label("", "")
+        
+        self.qtgui_time_sink_x_0_1.enable_tags(-1, True)
+        self.qtgui_time_sink_x_0_1.set_trigger_mode(qtgui.TRIG_MODE_FREE, qtgui.TRIG_SLOPE_POS, 0.0, 0, 0, "")
+        self.qtgui_time_sink_x_0_1.enable_autoscale(True)
+        self.qtgui_time_sink_x_0_1.enable_grid(False)
+        self.qtgui_time_sink_x_0_1.enable_axis_labels(True)
+        self.qtgui_time_sink_x_0_1.enable_control_panel(False)
+        
+        if not True:
+          self.qtgui_time_sink_x_0_1.disable_legend()
+        
+        labels = ['', '', '', '', '',
+                  '', '', '', '', '']
+        widths = [1, 1, 1, 1, 1,
+                  1, 1, 1, 1, 1]
+        colors = ["blue", "red", "green", "black", "cyan",
+                  "magenta", "yellow", "dark red", "dark green", "blue"]
+        styles = [1, 1, 1, 1, 1,
+                  1, 1, 1, 1, 1]
+        markers = [-1, -1, -1, -1, -1,
+                   -1, -1, -1, -1, -1]
+        alphas = [1.0, 1.0, 1.0, 1.0, 1.0,
+                  1.0, 1.0, 1.0, 1.0, 1.0]
+        
+        for i in xrange(1):
+            if len(labels[i]) == 0:
+                self.qtgui_time_sink_x_0_1.set_line_label(i, "Data {0}".format(i))
+            else:
+                self.qtgui_time_sink_x_0_1.set_line_label(i, labels[i])
+            self.qtgui_time_sink_x_0_1.set_line_width(i, widths[i])
+            self.qtgui_time_sink_x_0_1.set_line_color(i, colors[i])
+            self.qtgui_time_sink_x_0_1.set_line_style(i, styles[i])
+            self.qtgui_time_sink_x_0_1.set_line_marker(i, markers[i])
+            self.qtgui_time_sink_x_0_1.set_line_alpha(i, alphas[i])
+        
+        self._qtgui_time_sink_x_0_1_win = sip.wrapinstance(self.qtgui_time_sink_x_0_1.pyqwidget(), Qt.QWidget)
+        self.top_grid_layout.addWidget(self._qtgui_time_sink_x_0_1_win, 3,0,1,1)
+        self.qtgui_time_sink_x_0_0_0_0 = qtgui.time_sink_f(
+        	1024, #size
+        	samp_rate, #samp_rate
+        	"QT GUI Time Sink - RX RF front-end output", #name
+        	1 #number of inputs
+        )
+        self.qtgui_time_sink_x_0_0_0_0.set_update_time(0.10)
+        self.qtgui_time_sink_x_0_0_0_0.set_y_axis(-1, 1)
+        
+        self.qtgui_time_sink_x_0_0_0_0.set_y_label('Amplitude', "")
+        
+        self.qtgui_time_sink_x_0_0_0_0.enable_tags(-1, True)
+        self.qtgui_time_sink_x_0_0_0_0.set_trigger_mode(qtgui.TRIG_MODE_FREE, qtgui.TRIG_SLOPE_POS, 0.0, 0, 0, "")
+        self.qtgui_time_sink_x_0_0_0_0.enable_autoscale(True)
+        self.qtgui_time_sink_x_0_0_0_0.enable_grid(False)
+        self.qtgui_time_sink_x_0_0_0_0.enable_axis_labels(True)
+        self.qtgui_time_sink_x_0_0_0_0.enable_control_panel(False)
+        
+        if not True:
+          self.qtgui_time_sink_x_0_0_0_0.disable_legend()
+        
+        labels = ['', '', '', '', '',
+                  '', '', '', '', '']
+        widths = [1, 1, 1, 1, 1,
+                  1, 1, 1, 1, 1]
+        colors = ["blue", "red", "green", "black", "cyan",
+                  "magenta", "yellow", "dark red", "dark green", "blue"]
+        styles = [1, 1, 1, 1, 1,
+                  1, 1, 1, 1, 1]
+        markers = [-1, -1, -1, -1, -1,
+                   -1, -1, -1, -1, -1]
+        alphas = [1.0, 1.0, 1.0, 1.0, 1.0,
+                  1.0, 1.0, 1.0, 1.0, 1.0]
+        
+        for i in xrange(1):
+            if len(labels[i]) == 0:
+                self.qtgui_time_sink_x_0_0_0_0.set_line_label(i, "Data {0}".format(i))
+            else:
+                self.qtgui_time_sink_x_0_0_0_0.set_line_label(i, labels[i])
+            self.qtgui_time_sink_x_0_0_0_0.set_line_width(i, widths[i])
+            self.qtgui_time_sink_x_0_0_0_0.set_line_color(i, colors[i])
+            self.qtgui_time_sink_x_0_0_0_0.set_line_style(i, styles[i])
+            self.qtgui_time_sink_x_0_0_0_0.set_line_marker(i, markers[i])
+            self.qtgui_time_sink_x_0_0_0_0.set_line_alpha(i, alphas[i])
+        
+        self._qtgui_time_sink_x_0_0_0_0_win = sip.wrapinstance(self.qtgui_time_sink_x_0_0_0_0.pyqwidget(), Qt.QWidget)
+        self.top_grid_layout.addWidget(self._qtgui_time_sink_x_0_0_0_0_win, 6,0,1,1)
         self.qtgui_time_sink_x_0_0_0 = qtgui.time_sink_c(
         	1024, #size
         	samp_rate, #samp_rate
@@ -230,7 +333,7 @@ class ofdm_simulation(gr.top_block, Qt.QWidget):
         
         self.qtgui_time_sink_x_0_0_0.enable_tags(-1, True)
         self.qtgui_time_sink_x_0_0_0.set_trigger_mode(qtgui.TRIG_MODE_FREE, qtgui.TRIG_SLOPE_POS, 0.0, 0, 0, "")
-        self.qtgui_time_sink_x_0_0_0.enable_autoscale(False)
+        self.qtgui_time_sink_x_0_0_0.enable_autoscale(True)
         self.qtgui_time_sink_x_0_0_0.enable_grid(False)
         self.qtgui_time_sink_x_0_0_0.enable_axis_labels(True)
         self.qtgui_time_sink_x_0_0_0.enable_control_panel(False)
@@ -280,7 +383,7 @@ class ofdm_simulation(gr.top_block, Qt.QWidget):
         
         self.qtgui_time_sink_x_0_0.enable_tags(-1, True)
         self.qtgui_time_sink_x_0_0.set_trigger_mode(qtgui.TRIG_MODE_FREE, qtgui.TRIG_SLOPE_POS, 0.0, 0, 0, "")
-        self.qtgui_time_sink_x_0_0.enable_autoscale(False)
+        self.qtgui_time_sink_x_0_0.enable_autoscale(True)
         self.qtgui_time_sink_x_0_0.enable_grid(False)
         self.qtgui_time_sink_x_0_0.enable_axis_labels(True)
         self.qtgui_time_sink_x_0_0.enable_control_panel(False)
@@ -318,7 +421,7 @@ class ofdm_simulation(gr.top_block, Qt.QWidget):
         self._qtgui_time_sink_x_0_0_win = sip.wrapinstance(self.qtgui_time_sink_x_0_0.pyqwidget(), Qt.QWidget)
         self.top_grid_layout.addWidget(self._qtgui_time_sink_x_0_0_win, 4,0,1,1)
         self.qtgui_time_sink_x_0 = qtgui.time_sink_c(
-        	1024, #size
+        	num_of_points, #size
         	samp_rate, #samp_rate
         	"QT GUI Time Sink - TX output", #name
         	1 #number of inputs
@@ -330,7 +433,7 @@ class ofdm_simulation(gr.top_block, Qt.QWidget):
         
         self.qtgui_time_sink_x_0.enable_tags(-1, True)
         self.qtgui_time_sink_x_0.set_trigger_mode(qtgui.TRIG_MODE_FREE, qtgui.TRIG_SLOPE_POS, 0.0, 0, 0, "")
-        self.qtgui_time_sink_x_0.enable_autoscale(False)
+        self.qtgui_time_sink_x_0.enable_autoscale(True)
         self.qtgui_time_sink_x_0.enable_grid(False)
         self.qtgui_time_sink_x_0.enable_axis_labels(True)
         self.qtgui_time_sink_x_0.enable_control_panel(False)
@@ -366,7 +469,38 @@ class ofdm_simulation(gr.top_block, Qt.QWidget):
             self.qtgui_time_sink_x_0.set_line_alpha(i, alphas[i])
         
         self._qtgui_time_sink_x_0_win = sip.wrapinstance(self.qtgui_time_sink_x_0.pyqwidget(), Qt.QWidget)
-        self.top_grid_layout.addWidget(self._qtgui_time_sink_x_0_win, 3,0,1,1)
+        self.top_grid_layout.addWidget(self._qtgui_time_sink_x_0_win, 3,1,1,1)
+        self.qtgui_number_sink_0 = qtgui.number_sink(
+            gr.sizeof_float,
+            0,
+            qtgui.NUM_GRAPH_VERT,
+            1
+        )
+        self.qtgui_number_sink_0.set_update_time(0.10)
+        self.qtgui_number_sink_0.set_title("")
+        
+        labels = ['', '', '', '', '',
+                  '', '', '', '', '']
+        units = ['', '', '', '', '',
+                 '', '', '', '', '']
+        colors = [("black", "black"), ("black", "black"), ("black", "black"), ("black", "black"), ("black", "black"),
+                  ("black", "black"), ("black", "black"), ("black", "black"), ("black", "black"), ("black", "black")]
+        factor = [1, 1, 1, 1, 1,
+                  1, 1, 1, 1, 1]
+        for i in xrange(1):
+            self.qtgui_number_sink_0.set_min(i, -1)
+            self.qtgui_number_sink_0.set_max(i, 0)
+            self.qtgui_number_sink_0.set_color(i, colors[i][0], colors[i][1])
+            if len(labels[i]) == 0:
+                self.qtgui_number_sink_0.set_label(i, "Data {0}".format(i))
+            else:
+                self.qtgui_number_sink_0.set_label(i, labels[i])
+            self.qtgui_number_sink_0.set_unit(i, units[i])
+            self.qtgui_number_sink_0.set_factor(i, factor[i])
+        
+        self.qtgui_number_sink_0.enable_autoscale(True)
+        self._qtgui_number_sink_0_win = sip.wrapinstance(self.qtgui_number_sink_0.pyqwidget(), Qt.QWidget)
+        self.top_grid_layout.addWidget(self._qtgui_number_sink_0_win, 6,1,1,1)
         self.qtgui_freq_sink_x_1_0 = qtgui.freq_sink_c(
         	1024, #size
         	firdes.WIN_BLACKMAN_hARRIS, #wintype
@@ -422,7 +556,7 @@ class ofdm_simulation(gr.top_block, Qt.QWidget):
         self.qtgui_freq_sink_x_1.set_y_axis(-140, 10)
         self.qtgui_freq_sink_x_1.set_y_label('Relative Gain', 'dB')
         self.qtgui_freq_sink_x_1.set_trigger_mode(qtgui.TRIG_MODE_FREE, 0.0, 0, "")
-        self.qtgui_freq_sink_x_1.enable_autoscale(False)
+        self.qtgui_freq_sink_x_1.enable_autoscale(True)
         self.qtgui_freq_sink_x_1.enable_grid(False)
         self.qtgui_freq_sink_x_1.set_fft_average(1.0)
         self.qtgui_freq_sink_x_1.enable_axis_labels(True)
@@ -452,7 +586,7 @@ class ofdm_simulation(gr.top_block, Qt.QWidget):
             self.qtgui_freq_sink_x_1.set_line_alpha(i, alphas[i])
         
         self._qtgui_freq_sink_x_1_win = sip.wrapinstance(self.qtgui_freq_sink_x_1.pyqwidget(), Qt.QWidget)
-        self.top_grid_layout.addWidget(self._qtgui_freq_sink_x_1_win, 3,1,1,1)
+        self.top_grid_layout.addWidget(self._qtgui_freq_sink_x_1_win, 3,2,1,1)
         self.qtgui_freq_sink_x_0 = qtgui.freq_sink_c(
         	1024, #size
         	firdes.WIN_BLACKMAN_hARRIS, #wintype
@@ -496,6 +630,7 @@ class ofdm_simulation(gr.top_block, Qt.QWidget):
         
         self._qtgui_freq_sink_x_0_win = sip.wrapinstance(self.qtgui_freq_sink_x_0.pyqwidget(), Qt.QWidget)
         self.top_grid_layout.addWidget(self._qtgui_freq_sink_x_0_win, 5,1,1,1)
+        self.fec_ber_bf_0 = fec.ber_bf(False, 100, -7.0)
         self.digital_ofdm_tx_0 = digital.ofdm_tx(
         	  fft_len=fft_len, cp_len=fft_len/4,
         	  packet_length_tag_key=len_tag_key,
@@ -515,7 +650,7 @@ class ofdm_simulation(gr.top_block, Qt.QWidget):
         	  scramble_bits=False
         	 )
         self.channels_impairments_0 = channels.impairments(phase_noise, iq_mag, iq_ph, q_offset, i_offset, 0, dist2, dist3)
-        self.channels_dynamic_channel_model_0 = channels.dynamic_channel_model( samp_rate, 0.01, 1e3, 0.01, 1e3, 8, 2.0, False, 4.0, (-0.0025, -0.00125, 0.0, 0.00125, 0.0025, 0.00375, 0.005, 0.00625, 0.0075, 0.00875, 0.01, 0.01125, 0.0125, 0.015, 0.01625, 0.0175, 0.01875, 0.02, 0.02125, 0.0225, 0.02375, 0.025, 0.0275, 0.02875, 0.03, 0.03125, 0.0325, 0.03375, 0.035, 0.03625, 0.0375, 0.03875, 0.04, 0.04125, 0.0425, 0.04375, 0.045, 0.04625, 0.0475, 0.05125, 0.0525, 0.055, 0.05625, 0.0575, 0.06, 0.06375, 0.065, 0.06625, 0.0675, 0.06875, 0.0725, 0.08, 0.08125, 0.085, 0.08625, 0.0875, 0.08875, 0.09125, 0.0925, 0.09375, 0.095, 0.09875, 0.1, 0.1075, 0.10875, 0.11, 0.11125, 0.13125, 0.1325), (0.16529889, 0.46954084, 0.58274825, 0.24561255, 0.50459457, 0.69767633, 1.0, 0.77724474, 0.48675226, 0.46954084, 0.21267289, 0.19090106, 0.31600413, 0.45293801, 0.8057353, 0.64920938, 0.50459457, 0.1978987, 0.35204369, 0.54226525, 0.31600413, 0.15945397, 0.2204686, 0.35204369, 0.37832563, 0.37832563, 0.36494815, 0.2204686, 0.17763933, 0.45293801, 0.52309091, 0.52309091, 0.46954084, 0.35204369, 0.40656966, 0.25461568, 0.23692776, 0.32758753, 0.1978987, 0.21267289, 0.2204686, 0.19090106, 0.24561255, 0.17135806, 0.21267289, 0.16529889, 0.2204686, 0.30483032, 0.33959553, 0.18415085, 0.18415085, 0.22855006, 0.2940516, 0.19090106, 0.17135806, 0.18415085, 0.1978987, 0.17763933, 0.15945397, 0.26394884, 0.24561255, 0.21267289, 0.19090106, 0.17763933, 0.2204686, 0.21267289, 0.17135806, 0.17135806, 0.16529889), 8, 1.0, 0 )
+        self.channels_dynamic_channel_model_0 = channels.dynamic_channel_model( samp_rate, 0.01, 1e3, cfo_std, 1e3, 8, 2.0, False, 4.0, (-0.0025, -0.00125, 0.0, 0.00125, 0.0025, 0.00375, 0.005, 0.00625, 0.0075, 0.00875, 0.01, 0.01125, 0.0125, 0.015, 0.01625, 0.0175, 0.01875, 0.02, 0.02125, 0.0225, 0.02375, 0.025, 0.0275, 0.02875, 0.03, 0.03125, 0.0325, 0.03375, 0.035, 0.03625, 0.0375, 0.03875, 0.04, 0.04125, 0.0425, 0.04375, 0.045, 0.04625, 0.0475, 0.05125, 0.0525, 0.055, 0.05625, 0.0575, 0.06, 0.06375, 0.065, 0.06625, 0.0675, 0.06875, 0.0725, 0.08, 0.08125, 0.085, 0.08625, 0.0875, 0.08875, 0.09125, 0.0925, 0.09375, 0.095, 0.09875, 0.1, 0.1075, 0.10875, 0.11, 0.11125, 0.13125, 0.1325), (0.16529889, 0.46954084, 0.58274825, 0.24561255, 0.50459457, 0.69767633, 1.0, 0.77724474, 0.48675226, 0.46954084, 0.21267289, 0.19090106, 0.31600413, 0.45293801, 0.8057353, 0.64920938, 0.50459457, 0.1978987, 0.35204369, 0.54226525, 0.31600413, 0.15945397, 0.2204686, 0.35204369, 0.37832563, 0.37832563, 0.36494815, 0.2204686, 0.17763933, 0.45293801, 0.52309091, 0.52309091, 0.46954084, 0.35204369, 0.40656966, 0.25461568, 0.23692776, 0.32758753, 0.1978987, 0.21267289, 0.2204686, 0.19090106, 0.24561255, 0.17135806, 0.21267289, 0.16529889, 0.2204686, 0.30483032, 0.33959553, 0.18415085, 0.18415085, 0.22855006, 0.2940516, 0.19090106, 0.17135806, 0.18415085, 0.1978987, 0.17763933, 0.15945397, 0.26394884, 0.24561255, 0.21267289, 0.19090106, 0.17763933, 0.2204686, 0.21267289, 0.17135806, 0.17135806, 0.16529889), 8, 1.0, 0 )
         self.channels_channel_model_0 = channels.channel_model(
         	noise_voltage=noise,
         	frequency_offset=freq,
@@ -526,13 +661,20 @@ class ofdm_simulation(gr.top_block, Qt.QWidget):
         )
         self.blocks_throttle_0 = blocks.throttle(gr.sizeof_gr_complex*1, samp_rate,True)
         self.blocks_tag_debug_0 = blocks.tag_debug(gr.sizeof_char*1, '', 'packet_num'); self.blocks_tag_debug_0.set_display(True)
-        self.blocks_stream_to_tagged_stream_0 = blocks.stream_to_tagged_stream(gr.sizeof_char, 1, packet_len, len_tag_key)
+        self.blocks_stream_to_tagged_stream_0 = blocks.stream_to_tagged_stream(gr.sizeof_char, vec_length, packet_len, len_tag_key)
+        self.blocks_ctrlport_monitor_performance_0 = not True or monitor("gr-perf-monitorx")
+        self.blocks_char_to_float_0_0 = blocks.char_to_float(1, 1)
+        self.blocks_char_to_float_0 = blocks.char_to_float(1, 1)
         self.analog_random_source_x_0 = blocks.vector_source_b(map(int, numpy.random.randint(0, 256, 1000)), True)
 
         ##################################################
         # Connections
         ##################################################
+        self.connect((self.analog_random_source_x_0, 0), (self.blocks_char_to_float_0, 0))    
         self.connect((self.analog_random_source_x_0, 0), (self.blocks_stream_to_tagged_stream_0, 0))    
+        self.connect((self.analog_random_source_x_0, 0), (self.fec_ber_bf_0, 0))    
+        self.connect((self.blocks_char_to_float_0, 0), (self.qtgui_time_sink_x_0_1, 0))    
+        self.connect((self.blocks_char_to_float_0_0, 0), (self.qtgui_time_sink_x_0_0_0_0, 0))    
         self.connect((self.blocks_stream_to_tagged_stream_0, 0), (self.digital_ofdm_tx_0, 0))    
         self.connect((self.blocks_throttle_0, 0), (self.channels_dynamic_channel_model_0, 0))    
         self.connect((self.channels_channel_model_0, 0), (self.channels_impairments_0, 0))    
@@ -544,16 +686,32 @@ class ofdm_simulation(gr.top_block, Qt.QWidget):
         self.connect((self.channels_impairments_0, 0), (self.qtgui_freq_sink_x_0, 0))    
         self.connect((self.channels_impairments_0, 0), (self.qtgui_time_sink_x_0_0_0, 0))    
         self.connect((self.channels_impairments_0, 0), (self.qtgui_waterfall_sink_x_0, 0))    
+        self.connect((self.digital_ofdm_rx_0, 0), (self.blocks_char_to_float_0_0, 0))    
         self.connect((self.digital_ofdm_rx_0, 0), (self.blocks_tag_debug_0, 0))    
+        self.connect((self.digital_ofdm_rx_0, 0), (self.fec_ber_bf_0, 1))    
         self.connect((self.digital_ofdm_tx_0, 0), (self.blocks_throttle_0, 0))    
         self.connect((self.digital_ofdm_tx_0, 0), (self.qtgui_freq_sink_x_1, 0))    
         self.connect((self.digital_ofdm_tx_0, 0), (self.qtgui_time_sink_x_0, 0))    
         self.connect((self.digital_ofdm_tx_0, 0), (self.qtgui_waterfall_sink_x_1, 0))    
+        self.connect((self.fec_ber_bf_0, 0), (self.qtgui_number_sink_0, 0))    
 
     def closeEvent(self, event):
         self.settings = Qt.QSettings("GNU Radio", "ofdm_simulation")
         self.settings.setValue("geometry", self.saveGeometry())
         event.accept()
+
+    def get_vec_length(self):
+        return self.vec_length
+
+    def set_vec_length(self, vec_length):
+        self.vec_length = vec_length
+
+    def get_update_period(self):
+        return self.update_period
+
+    def set_update_period(self, update_period):
+        self.update_period = update_period
+        self.qtgui_time_sink_x_0_1.set_update_time(self.update_period)
 
     def get_timing(self):
         return self.timing
@@ -570,6 +728,8 @@ class ofdm_simulation(gr.top_block, Qt.QWidget):
         self.qtgui_waterfall_sink_x_1_0.set_frequency_range(0, self.samp_rate)
         self.qtgui_waterfall_sink_x_1.set_frequency_range(0, self.samp_rate)
         self.qtgui_waterfall_sink_x_0.set_frequency_range(0, self.samp_rate)
+        self.qtgui_time_sink_x_0_1.set_samp_rate(self.samp_rate)
+        self.qtgui_time_sink_x_0_0_0_0.set_samp_rate(self.samp_rate)
         self.qtgui_time_sink_x_0_0_0.set_samp_rate(self.samp_rate)
         self.qtgui_time_sink_x_0_0.set_samp_rate(self.samp_rate)
         self.qtgui_time_sink_x_0.set_samp_rate(self.samp_rate)
@@ -600,6 +760,12 @@ class ofdm_simulation(gr.top_block, Qt.QWidget):
         self.packet_len = packet_len
         self.blocks_stream_to_tagged_stream_0.set_packet_len(self.packet_len)
         self.blocks_stream_to_tagged_stream_0.set_packet_len_pmt(self.packet_len)
+
+    def get_num_of_points(self):
+        return self.num_of_points
+
+    def set_num_of_points(self, num_of_points):
+        self.num_of_points = num_of_points
 
     def get_noise(self):
         return self.noise
@@ -662,6 +828,13 @@ class ofdm_simulation(gr.top_block, Qt.QWidget):
         self.dist2 = dist2
         self.channels_impairments_0.set_gamma(self.dist2)
 
+    def get_cfo_std(self):
+        return self.cfo_std
+
+    def set_cfo_std(self, cfo_std):
+        self.cfo_std = cfo_std
+        self.channels_dynamic_channel_model_0.set_cfo_dev_std(self.cfo_std)
+
 
 def main(top_block_cls=ofdm_simulation, options=None):
 
@@ -679,6 +852,11 @@ def main(top_block_cls=ofdm_simulation, options=None):
         tb.stop()
         tb.wait()
     qapp.connect(qapp, Qt.SIGNAL("aboutToQuit()"), quitting)
+    if True:
+        if True:
+            (tb.blocks_ctrlport_monitor_performance_0).start()
+    else:
+        sys.stderr.write("Monitor '{0}' does not have an enable ('en') parameter.".format("tb.blocks_ctrlport_monitor_performance_0"))
     qapp.exec_()
 
 
