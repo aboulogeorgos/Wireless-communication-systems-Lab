@@ -35,4 +35,4 @@ Example7 demonstrates the implementation and use of the downsampler in gnuradio.
 Example8 demonstrates the implementation and use of the high pass filter (HPF) in gnuradio.
 
 ## Example9
-Example9 demonstrates the implementation and use of the low pass filter (HPF) in gnuradio.
+Example9 demonstrates the implementation and use of the low pass filter (LPF) in gnuradio.
