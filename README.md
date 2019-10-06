@@ -1,6 +1,6 @@
 # Wireless-communication-systems-Lab
 
-## Objective
+## Objectives
 - To demonstrate the GNU radio functionalities
 - To create a GNU radio examples set
 
