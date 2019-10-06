@@ -36,3 +36,6 @@ Example8 demonstrates the implementation and use of the high pass filter (HPF) i
 
 ## Example9
 Example9 demonstrates the implementation and use of the low pass filter (LPF) in gnuradio.
+
+## Example10
+Example10 demonstrates the use of the "Message Debug" operator in gnuradio.
