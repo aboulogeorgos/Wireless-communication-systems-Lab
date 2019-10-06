@@ -10,7 +10,7 @@
     </param>
     <param>
       <key>window_size</key>
-      <value>1000,500</value>
+      <value>1000,400</value>
     </param>
     <param>
       <key>category</key>
@@ -78,7 +78,7 @@
     </param>
     <param>
       <key>title</key>
-      <value>Create AWGN noise</value>
+      <value>Create colored noise</value>
     </param>
   </block>
   <block>
