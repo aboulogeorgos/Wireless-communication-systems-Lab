@@ -1,5 +1,5 @@
 # Wireless-communication-systems-Lab
-# Lab 0 Example 5
+# Lab 0 Example 6
 
 ## Copyright
 Copyright 2019, Alexandros-Apostolos A. Boulogeorgos. All rights reserved.
