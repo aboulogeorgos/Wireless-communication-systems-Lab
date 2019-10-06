@@ -40,6 +40,8 @@ Example9 demonstrates the implementation and use of the low pass filter (LPF) in
 ## Example10
 Example10 demonstrates the use of the "Message Debug" operator in gnuradio.
 
-
 ## Example11
 Example11 demonstrates the use of the "selector" operator in gnuradio.
+
+## Example12
+Example12 demonstrates the implementation of colored noise in gnuradio.
