@@ -51,3 +51,6 @@ Example13 demonstrates the implementation of a down-converter in gnuradio.
 
 ## Example14
 Example14 demonstrates the use of automatic gain control (AGC) in gnuradio.
+
+## Example15
+Example15 demonstrates the use of the polyphase synthesizer in gnuradio. 
