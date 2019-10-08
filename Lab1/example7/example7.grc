@@ -10,7 +10,7 @@
     </param>
     <param>
       <key>window_size</key>
-      <value></value>
+      <value>500,400</value>
     </param>
     <param>
       <key>category</key>
@@ -124,7 +124,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(8, 100)</value>
+      <value>(248, 12)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -199,7 +199,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(256, 172)</value>
+      <value>(16, 172)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -254,7 +254,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(432, 196)</value>
+      <value>(168, 196)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -337,7 +337,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(640, 224)</value>
+      <value>(344, 232)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -624,7 +624,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(632, 136)</value>
+      <value>(344, 136)</value>
     </param>
     <param>
       <key>gui_hint</key>
