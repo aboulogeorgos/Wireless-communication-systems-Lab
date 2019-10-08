@@ -24,3 +24,6 @@ Example4 simulates an AWGN channel.
 
 ## Example5
 Example5 demonstrates the use and functionalities of the Interpolating FIR filter in gnuradio.
+
+## Example6
+Example6 demonstrates the use of the low pass filter (LPF) in gnuradio.
