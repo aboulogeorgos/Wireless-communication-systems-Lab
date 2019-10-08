@@ -48,3 +48,6 @@ Example12 demonstrates the implementation of colored noise in gnuradio.
 
 ## Example13
 Example13 demonstrates the implementation of a down-converter in gnuradio.
+
+## Example14
+Example14 demonstrates the use of automatic gain control (AGC) in gnuradio.
