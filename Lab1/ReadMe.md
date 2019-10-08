@@ -15,3 +15,6 @@ Example1 demonstrates the use of QT GUI Sink.
 
 ## Example2
 Example2 demonstrates the implementaion of a waveform chooser in gnuradio.
+
+## Example3
+Example3 demonstrates the use of the QT time and frequency sink in gnuradio.
