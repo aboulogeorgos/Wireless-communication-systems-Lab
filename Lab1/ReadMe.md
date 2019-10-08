@@ -33,3 +33,6 @@ Example7 demonstrates how the choise of sampling frequency can influence the qua
 
 ## Example8
 Example8 demonstrates the functionalities of the rational resampler in gnuradio.
+
+## Example9
+Example9 demonstrates how to measure the power of a received signal in gnuradio.
