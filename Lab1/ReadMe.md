@@ -36,3 +36,6 @@ Example8 demonstrates the functionalities of the rational resampler in gnuradio.
 
 ## Example9
 Example9 demonstrates how to measure the power of a received signal in gnuradio.
+
+## Example10
+Example10 demonstrates how to measure the average power of a received signal in gnuradio.
