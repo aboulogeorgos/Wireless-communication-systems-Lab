@@ -8,7 +8,7 @@ Copyright 2019, Alexandros-Apostolos A. Boulogeorgos. All rights reserved.
 Alexandros Apostolos A. Boulogeorgos (e-mail: al.boulogeorgos@ieee.org)
 
 ## Description  
-This is a simple example that demonstrates the use of the polyphase synthesizer in gnuradio. 
+This is a simple example that demonstrates the functionalities of the rational resampler in gnuradio. 
 
 ## Topology
-![alt text](https://github.com/aboulogeorgos/Wireless-communication-systems-Lab/blob/master/Lab0/example15/example15.grc.png?raw=true)
+![alt text](https://github.com/aboulogeorgos/Wireless-communication-systems-Lab/blob/master/Lab1/example8/example8.grc.png?raw=true)
