@@ -30,3 +30,6 @@ Example6 demonstrates the use of the low pass filter (LPF) in gnuradio.
 
 ## Example7
 Example7 demonstrates how the choise of sampling frequency can influence the quality of the received signal in gnuradio.
+
+## Example8
+Example8 demonstrates the functionalities of the rational resampler in gnuradio.
