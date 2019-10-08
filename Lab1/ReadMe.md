@@ -9,5 +9,9 @@ Alexandros Apostolos A. Boulogeorgos (e-mail: al.boulogeorgos@ieee.org)
 2. To create simple examples and simulate low complexity communications systems.
 
 # Contents
+
 ## Example1
-Demonstrates the use of QT GUI Sink.
+Example1 demonstrates the use of QT GUI Sink.
+
+## Example2
+Example2 demonstrates the implementaion of a waveform chooser in gnuradio.
