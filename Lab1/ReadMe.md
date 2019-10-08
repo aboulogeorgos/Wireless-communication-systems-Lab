@@ -27,3 +27,6 @@ Example5 demonstrates the use and functionalities of the Interpolating FIR filte
 
 ## Example6
 Example6 demonstrates the use of the low pass filter (LPF) in gnuradio.
+
+## Example7
+Example7 demonstrates how the choise of sampling frequency can influence the quality of the received signal in gnuradio.
