@@ -21,3 +21,6 @@ Example3 demonstrates the use of the QT time and frequency sink in gnuradio.
 
 ## Example4
 Example4 simulates an AWGN channel.
+
+## Example5
+Example5 demonstrates the use and functionalities of the Interpolating FIR filter in gnuradio.
