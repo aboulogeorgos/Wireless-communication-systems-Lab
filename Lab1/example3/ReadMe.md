@@ -11,4 +11,4 @@ Alexandros Apostolos A. Boulogeorgos (e-mail: al.boulogeorgos@ieee.org)
 This is a simple example that demonstrates the use of the QT time and frequency sink in gnuradio. 
 
 ## Topology
-![alt text](https://github.com/aboulogeorgos/Wireless-communication-systems-Lab/blob/master/Lab0/example15/example15.grc.png?raw=true)
+![alt text](https://github.com/aboulogeorgos/Wireless-communication-systems-Lab/blob/master/Lab1/example3/example3.grc.png?raw=true)
