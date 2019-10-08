@@ -8,7 +8,7 @@ Copyright 2019, Alexandros-Apostolos A. Boulogeorgos. All rights reserved.
 Alexandros Apostolos A. Boulogeorgos (e-mail: al.boulogeorgos@ieee.org)
 
 ## Description  
-This is a simple example that demonstrates how to measure the average power of a received signal in gnuradio. 
+This is a simple example that demonstrates how to analyze a .wav file in gnuradio. 
 
 ## Topology
-![alt text](https://github.com/aboulogeorgos/Wireless-communication-systems-Lab/blob/master/Lab1/example10/example10.grc.png?raw=true)
+![alt text](https://github.com/aboulogeorgos/Wireless-communication-systems-Lab/blob/master/Lab2/example1/example1.grc.png?raw=true)
