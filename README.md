@@ -61,3 +61,35 @@ Example12 demonstrates the implementation of colored noise in gnuradio.
 
 #### Example13
 Example13 demonstrates the implementation of a down-converter in gnuradio.
+
+### Lab1
+
+#### Example1
+Example1 demonstrates the use of QT GUI Sink.
+
+#### Example2
+Example2 demonstrates the implementaion of a waveform chooser in gnuradio.
+
+#### Example3
+Example3 demonstrates the use of the QT time and frequency sink in gnuradio.
+
+#### Example4
+Example4 simulates an AWGN channel.
+
+#### Example5
+Example5 demonstrates the use and functionalities of the Interpolating FIR filter in gnuradio.
+
+#### Example6
+Example6 demonstrates the use of the low pass filter (LPF) in gnuradio.
+
+#### Example7
+Example7 demonstrates how the choise of sampling frequency can influence the quality of the received signal in gnuradio.
+
+#### Example8
+Example8 demonstrates the functionalities of the rational resampler in gnuradio.
+
+#### Example9
+Example9 demonstrates how to measure the power of a received signal in gnuradio.
+
+#### Example10
+Example10 demonstrates how to measure the average power of a received signal in gnuradio.
