@@ -4,7 +4,7 @@
 # GNU Radio Python Flow Graph
 # Title: Power measurement
 # Author: Alexandros-Apostolos A. Boulogeorgos
-# Generated: Fri Aug  9 08:38:43 2019
+# Generated: Tue Oct  8 06:13:17 2019
 ##################################################
 
 if __name__ == '__main__':
