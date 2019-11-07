@@ -4,7 +4,7 @@
 # GNU Radio Python Flow Graph
 # Title: LPF
 # Author: Alexandros-Apostolos A. Boulogeorgos
-# Generated: Tue Aug 13 07:32:35 2019
+# Generated: Tue Nov  5 06:52:25 2019
 ##################################################
 
 if __name__ == '__main__':
@@ -59,7 +59,7 @@ class low_pass_filter(gr.top_block, Qt.QWidget):
         ##################################################
         # Variables
         ##################################################
-        self.taps = taps = firdes.low_pass_2(1, 1, 0.2, 0.05, 80)
+        self.taps = taps = firdes.low_pass_2(1, 1, 0.3, 0.05, 80)
         self.samp_rate = samp_rate = 100000
 
         ##################################################
