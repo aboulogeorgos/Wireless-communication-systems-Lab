@@ -62,6 +62,12 @@ Example12 demonstrates the implementation of colored noise in gnuradio.
 #### Example13
 Example13 demonstrates the implementation of a down-converter in gnuradio.
 
+#### Example14
+Example14 demonstrates the use of automatic gain control (AGC) in gnuradio.
+
+#### Example15
+Example15 demonstrates the use of the polyphase synthesizer in gnuradio. 
+
 ### Lab1
 
 #### Example1
